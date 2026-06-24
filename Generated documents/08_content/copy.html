@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Copy — typepairing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+                    colors: { primary: '#0f172a', secondary: '#1e293b', accent: '#112AD0' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .prose { max-width: 80ch; }
+        .prose pre { background: #1e293b; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; }
+        .prose code { background: #1e293b; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.875rem; }
+        .prose table { width: 100%; border-collapse: collapse; }
+        .prose th { background: #1e293b; padding: 0.75rem; text-align: left; font-weight: 600; }
+        .prose td { padding: 0.75rem; border-bottom: 1px solid #334155; }
+        .prose tr:hover { background: #1e293b/50; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen">
+    <header class="bg-slate-800/50 backdrop-blur-sm border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-xl font-bold" style="color:#112AD0">typepairing</a>
+                <nav class="flex gap-6 text-sm">
+                    <a href="../01_research/market_analysis.html" class="text-slate-400 hover:text-white transition">Research</a>
+                    <a href="../02_prd/product_requirements.html" class="text-slate-400 hover:text-white transition">PRD</a>
+                    <a href="../04_design/design_system.html" class="text-slate-400 hover:text-white transition">Design</a>
+                    <a href="copy.html" class="text-blue-500 font-medium">Content</a>
+                    <a href="../03_architecture/system_design.html" class="text-slate-400 hover:text-white transition">Architecture</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="max-w-5xl mx-auto px-6 py-12">
+        <h1 class="text-4xl font-bold mb-8">Website Copy: TyPair</h1>
+<h2 class="text-2xl font-semibold mb-4 mt-8">Meta Data</h2>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">**Meta Title**: TyPair — Scale, Pair, Preview, Ship. The Complete Typography Workspace</li>
+<li class="text-slate-300">**Meta Description**: Generate modular type scales, pair Google Fonts, preview on real shadcn UI blocks, and export CSS/Tailwind/JSON tokens — all in one split-screen workspace. No signup required.</li>
+</ul>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">1. Hero Section</h2>
+<p class="text-slate-300 mb-4"><strong>Headline</strong>: Design your type system. Ship in seconds.</p>
+<p class="text-slate-300 mb-4"><strong>Subheadline</strong>: TyPair is the complete typography workspace for designers and developers. Compute modular scales, pair header and body fonts, preview the hierarchy on real UI components, and export production-ready code — all without leaving your browser.</p>
+<p class="text-slate-300 mb-4"><strong>CTA Button</strong>: Start Scaling — It's Free</p>
+<p class="text-slate-300 mb-4"><strong>Secondary CTA</strong>: See How It Works</p>
+<p class="text-slate-300 mb-4"><strong>Alt Text Suggestion for Hero Image</strong>: Split-screen TyPair workspace showing the left control panel with scale and font selectors, and the right preview canvas rendering a full shadcn UI page layout with the configured typography.</p>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">2. Features Section</h2>
+<h3 class="text-xl font-semibold mb-3 mt-6">Feature 1: Modular Scale Calculator</h3>
+<p class="text-slate-300 mb-4"><strong>Title</strong>: Mathematical precision, instant results.</p>
+<p class="text-slate-300 mb-4"><strong>Description</strong>: Choose from classic musical intervals — Minor Second through Golden Ratio — or enter a custom ratio. TyPair computes every scale step in real time, displaying px, rem, line-height, and letter-spacing for each level from caption to display headings. No more spreadsheets or manual math.</p>
+<p class="text-slate-300 mb-4"><strong>Key Bullet Points</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">9 preset ratios plus unlimited custom values</li>
+<li class="text-slate-300">Adjustable steps above and below your base size</li>
+<li class="text-slate-300">Live computed values in px, rem, line-height, and letter-spacing</li>
+<li class="text-slate-300">Fluid <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">clamp()</code> generation for responsive typography out of the box</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>Alt Text</strong>: TyPair scale calculator dropdown showing musical interval options with live computed step values.</p>
+<h3 class="text-xl font-semibold mb-3 mt-6">Feature 2: Dual Font Controller</h3>
+<p class="text-slate-300 mb-4"><strong>Title</strong>: Find your perfect pairing in seconds.</p>
+<p class="text-slate-300 mb-4"><strong>Description</strong>: Search the full Google Fonts catalog — 1500+ families — with separate selectors for header and body fonts. Each selector previews the font name in its own typeface, and changes apply instantly to the preview canvas. Variable font axes (weight, width, optical size) are supported natively.</p>
+<p class="text-slate-300 mb-4"><strong>Key Bullet Points</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Real-time search across 1500+ Google Fonts</li>
+<li class="text-slate-300">Independent header and body font controls</li>
+<li class="text-slate-300">Variable font axis support (weight, width, optical size)</li>
+<li class="text-slate-300">Fonts load on demand with <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">font-display: swap</code> — no bloat, no lag</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>Alt Text</strong>: TyPair Dual Font Controller showing searchable font dropdowns for header and body fonts with live preview.</p>
+<h3 class="text-xl font-semibold mb-3 mt-6">Feature 3: Lock & Roll</h3>
+<p class="text-slate-300 mb-4"><strong>Title</strong>: Explore faster. Lock what works, roll through the rest.</p>
+<p class="text-slate-300 mb-4"><strong>Description</strong>: Inspired by Coolors, TyPair brings lock-and-roll exploration to font pairing. Found your header font? Lock it. Press Space to cycle through complementary body font options. The curated pairing algorithm ensures serif, sans-serif, display, and mono combinations that actually work together.</p>
+<p class="text-slate-300 mb-4"><strong>Key Bullet Points</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Lock either font independently and roll the other</li>
+<li class="text-slate-300">Spacebar shortcut for rapid exploration</li>
+<li class="text-slate-300">Curated pairing algorithm — serif + sans, display + body, and more</li>
+<li class="text-slate-300">Visual lock feedback with smooth font transitions</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>Alt Text</strong>: TyPair Lock & Roll controls showing a locked header font with the roll button cycling body font options.</p>
+<h3 class="text-xl font-semibold mb-3 mt-6">Feature 4: Live shadcn UI Preview</h3>
+<p class="text-slate-300 mb-4"><strong>Title</strong>: See your type system on real UI, not abstract blocks.</p>
+<p class="text-slate-300 mb-4"><strong>Description</strong>: The right pane defaults to a full page layout built with real shadcn components — navbar, hero section, feature cards, blog excerpt, and footer — all rendered with your selected fonts and scale. Toggle between the full layout view and the detailed hierarchy waterfall. Switch between desktop and mobile viewports to validate responsiveness.</p>
+<p class="text-slate-300 mb-4"><strong>Key Bullet Points</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Full shadcn page layout as the default preview</li>
+<li class="text-slate-300">Toggle between Full Layout and Hierarchy Waterfall views</li>
+<li class="text-slate-300">Desktop (1200px) and Mobile (375px) viewport simulation</li>
+<li class="text-slate-300">Custom preview text input for realistic content testing</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>Alt Text</strong>: TyPair preview canvas showing a shadcn UI page layout with navbar, hero, feature cards, and footer rendered in the selected typography.</p>
+<h3 class="text-xl font-semibold mb-3 mt-6">Feature 5: Responsive Dual Viewport</h3>
+<p class="text-slate-300 mb-4"><strong>Title</strong>: One scale for desktop. One for mobile. One panel.</p>
+<p class="text-slate-300 mb-4"><strong>Description</strong>: Configure independent base sizes and scale ratios for desktop and mobile simultaneously. See both viewports update in real time from a single control panel. No more rebuilding your type system for each breakpoint — TyPair handles both at once.</p>
+<p class="text-slate-300 mb-4"><strong>Key Bullet Points</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Independent base size and ratio for desktop and mobile</li>
+<li class="text-slate-300">Side-by-side preview frames (1200px + 375px)</li>
+<li class="text-slate-300">Optional sync toggle for unified control</li>
+<li class="text-slate-300">Fluid typography with configurable min/max viewport widths</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>Alt Text</strong>: TyPair Dual Viewport panel showing separate desktop and mobile scale configurations with live preview frames.</p>
+<h3 class="text-xl font-semibold mb-3 mt-6">Feature 6: Code Export</h3>
+<p class="text-slate-300 mb-4"><strong>Title</strong>: From scale to code. One click.</p>
+<p class="text-slate-300 mb-4"><strong>Description</strong>: Generate production-ready typography tokens in every format your stack needs. CSS Custom Properties, Tailwind CSS v3 <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">theme.extend</code>, Tailwind v4 <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">@theme</code>, or Style Dictionary JSON — all computed from your active scale. Copy to clipboard with a single click.</p>
+<p class="text-slate-300 mb-4"><strong>Key Bullet Points</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Four export formats: CSS, Tailwind v3, Tailwind v4, Style Dictionary JSON</li>
+<li class="text-slate-300">One-click copy with visual confirmation</li>
+<li class="text-slate-300">Includes font-family, font-size, line-height, and letter-spacing tokens</li>
+<li class="text-slate-300">Exports update automatically as you adjust the scale</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>Alt Text</strong>: TyPair Code Export panel showing four format tabs (CSS, Tailwind v3, Tailwind v4, JSON) with copy buttons.</p>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">3. About / Positioning Section</h2>
+<p class="text-slate-300 mb-4"><strong>Section Title</strong>: Built for the way teams really work.</p>
+<p class="text-slate-300 mb-4"><strong>Brand Story</strong>: TyPair was born from a simple observation: designers and developers use too many tools to get typography right. A scale calculator here, Google Fonts there, Figma for previews, and manual conversion to CSS. The handoff is slow, error-prone, and frustrating.</p>
+<p class="text-slate-300 mb-4">We built TyPair to collapse that workflow into a single workspace. One URL. One set of controls. Every format your team needs.</p>
+<p class="text-slate-300 mb-4"><strong>Key Differentiators</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">**Complete workspace** — Scale, pair, preview, and export in one place. No tab-switching.</li>
+<li class="text-slate-300">**Real UI preview** — See your type system on actual shadcn components, not abstract text blocks.</li>
+<li class="text-slate-300">**Dual viewport** — Configure desktop and mobile independently. Your scale works everywhere.</li>
+<li class="text-slate-300">**Developer-ready export** — CSS, Tailwind v3, Tailwind v4, and JSON from the same scale.</li>
+<li class="text-slate-300">**Shareable by design** — Full state encoded in the URL. Share a link, not a screenshot.</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>Target Keywords</strong>: typography scale tool, font pairing, modular scale generator, CSS type scale, Tailwind typography tokens, Google Fonts pairing, design system typography</p>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">4. Content / Blog Section</h2>
+<p class="text-slate-300 mb-4"><strong>Section Title</strong>: Articles and resources for better typography.</p>
+<p class="text-slate-300 mb-4"><strong>Category Descriptions</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">**Guides**: Step-by-step tutorials for building and implementing typography systems in your projects.</li>
+<li class="text-slate-300">**Engineering**: Technical deep-dives into fluid typography, CSS <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">clamp()</code>, variable fonts, and design token workflows.</li>
+<li class="text-slate-300">**Inspiration**: Curated font pairings, real-world case studies, and community showcases.</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>Blog Topic Ideas</strong>:</p>
+<p class="text-slate-300 mb-4">1. "The Math Behind Modular Typography Scales" — Understand how musical intervals map to visual hierarchy.</p>
+<p class="text-slate-300 mb-4">2. "How to Set Up Fluid Typography with clamp() in Tailwind CSS v4" — Practical guide with live examples.</p>
+<p class="text-slate-300 mb-4">3. "10 Font Pairings That Work Every Time" — Curated combinations with visual breakdowns.</p>
+<p class="text-slate-300 mb-4">4. "From Figma to Code: A Typography Token Workflow" — Bridge the design-to-development gap.</p>
+<p class="text-slate-300 mb-4">5. "Responsive Typography: Why One Base Size Doesn't Fit All" — Dual viewport strategies for modern layouts.</p>
+<p class="text-slate-300 mb-4">6. "Variable Fonts in Production: A Practical Guide" — Weight, width, and optical size axes explained.</p>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">5. Product/Utility Copy (In-App Text)</h2>
+<h3 class="text-xl font-semibold mb-3 mt-6">Control Panel Labels</h3>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">**Scale** section: "Base Size", "Ratio", "Steps Up", "Steps Down"</li>
+<li class="text-slate-300">**Fonts** section: "Header Font", "Body Font"</li>
+<li class="text-slate-300">**Lock & Roll**: "Lock" (tooltip: "Lock this font and roll the other"), "Roll" (tooltip: "Cycle to next pairing")</li>
+<li class="text-slate-300">**Viewport**: "Desktop", "Mobile", "Sync"</li>
+<li class="text-slate-300">**Preview**: "Full Layout", "Hierarchy Waterfall"</li>
+<li class="text-slate-300">**Custom Text**: "Preview Text" input placeholder: "Type your own text to preview..."</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Empty States</h3>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Font search empty: "No fonts found. Try a different search term."</li>
+<li class="text-slate-300">Scale steps empty: "Adjust the steps up/down controls to generate your scale."</li>
+<li class="text-slate-300">Export panel empty: "Configure your scale and fonts above to generate code."</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Success Messages</h3>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Copy to clipboard: "Copied!" (with checkmark icon)</li>
+<li class="text-slate-300">URL copied: "Link copied! Share this URL to share your scale."</li>
+<li class="text-slate-300">Reset confirmation: "All settings reset to defaults."</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Error Messages</h3>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Font load failure: "Couldn't load this font. Check your connection or try another."</li>
+<li class="text-slate-300">Invalid ratio: "Enter a number greater than 1."</li>
+<li class="text-slate-300">Invalid base size: "Enter a size between 8px and 32px."</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Tooltip Text</h3>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Lock icon (unlocked): "Click to lock this font"</li>
+<li class="text-slate-300">Lock icon (locked): "Click to unlock"</li>
+<li class="text-slate-300">Roll button: "Cycle to next pairing (or press Space)"</li>
+<li class="text-slate-300">Viewport toggle: "Switch between desktop and mobile preview"</li>
+<li class="text-slate-300">Sync toggle: "Sync desktop and mobile controls"</li>
+<li class="text-slate-300">Export tab: "Copy to clipboard"</li>
+</ul>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">6. Footer</h2>
+<p class="text-slate-300 mb-4"><strong>Tagline</strong>: TyPair — Scale, Pair, Preview, Ship.</p>
+<p class="text-slate-300 mb-4"><strong>Navigation Links</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Product: Scale Calculator, Font Pairing, Code Export, Changelog</li>
+<li class="text-slate-300">Resources: Blog, Documentation, API Reference</li>
+<li class="text-slate-300">Company: About, Privacy, Terms</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>Social / Community</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">GitHub: github.com/typair/typair</li>
+<li class="text-slate-300">Twitter/X: @typair</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>Legal</strong>: &copy; 2026 TyPair. All rights reserved.</p>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">7. SEO Keywords (for reference)</h2>
+<p class="text-slate-300 mb-4"><strong>Primary Keywords</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">type scale generator</li>
+<li class="text-slate-300">font pairing tool</li>
+<li class="text-slate-300">modular typography scale</li>
+<li class="text-slate-300">CSS type scale generator</li>
+<li class="text-slate-300">Google Fonts pairer</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>Long-Tail Keywords</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">responsive typography scale tool</li>
+<li class="text-slate-300">Tailwind CSS font size generator</li>
+<li class="text-slate-300">design system typography tokens</li>
+<li class="text-slate-300">fluid typography clamp calculator</li>
+<li class="text-slate-300">shadcn UI typography preview</li>
+<li class="text-slate-300">font lock and roll tool</li>
+<li class="text-slate-300">dual viewport type scale</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>Technical Keywords</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">CSS custom properties typography</li>
+<li class="text-slate-300">Tailwind v4 @theme font scale</li>
+<li class="text-slate-300">Style Dictionary typography tokens</li>
+<li class="text-slate-300">variable font pairing</li>
+<li class="text-slate-300">next/font Google Fonts integration</li>
+</ul>
+    </main>
+    <footer class="border-t border-slate-800 mt-12 py-8">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-500 text-sm">
+            typepairing — Website Copy
+        </div>
+    </footer>
+</body>
+</html>

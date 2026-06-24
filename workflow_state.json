@@ -1,0 +1,21 @@
+{
+  "current_stage": "qa",
+  "completed_stages": [
+    "researcher",
+    "pm",
+    "content_writer",
+    "designer",
+    "designer_visual",
+    "architect",
+    "art_director",
+    "be_engineer",
+    "fe_engineer",
+    "qa"
+  ],
+  "qa_attempts": 0,
+  "failing_items": [],
+  "iteration_history": [],
+  "pending_agent": null,
+  "last_review": null,
+  "feedback": {}
+}

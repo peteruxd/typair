@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Architecture — typepairing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+                    colors: { primary: '#0f172a', secondary: '#1e293b', accent: '#112AD0' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .prose { max-width: 80ch; }
+        .prose pre { background: #1e293b; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; }
+        .prose code { background: #1e293b; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.875rem; }
+        .prose table { width: 100%; border-collapse: collapse; }
+        .prose th { background: #1e293b; padding: 0.75rem; text-align: left; font-weight: 600; }
+        .prose td { padding: 0.75rem; border-bottom: 1px solid #334155; }
+        .prose tr:hover { background: #1e293b/50; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen">
+    <header class="bg-slate-800/50 backdrop-blur-sm border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-xl font-bold" style="color:#112AD0">typepairing</a>
+                <nav class="flex gap-6 text-sm">
+                    <a href="../01_research/market_analysis.html" class="text-slate-400 hover:text-white transition">Research</a>
+                    <a href="../02_prd/product_requirements.html" class="text-slate-400 hover:text-white transition">PRD</a>
+                    <a href="../04_design/design_system.html" class="text-slate-400 hover:text-white transition">Design</a>
+                    <a href="../08_content/copy.html" class="text-slate-400 hover:text-white transition">Content</a>
+                    <a href="system_design.html" class="text-blue-500 font-medium">Architecture</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="max-w-5xl mx-auto px-6 py-12">
+        <h1 class="text-4xl font-bold mb-8">System Architecture: TyPair</h1>
+<h2 class="text-2xl font-semibold mb-4 mt-8">1. Technology Stack</h2>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><th class="border border-slate-700 px-4 py-2 text-slate-300">Category</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Technology</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Rationale</th></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Framework</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Next.js 16 (App Router)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">React Server Components for shell, Client Components for interactive workspace; built-in font optimization via `next/font`</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Language</td><td class="border border-slate-700 px-4 py-2 text-slate-300">TypeScript 5</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Type safety across all components, props, and API routes</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Styling</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Tailwind CSS v4 + `@theme`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">CSS variable-driven theming for light/dark mode; shadcn/ui compatible</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">UI Components</td><td class="border border-slate-700 px-4 py-2 text-slate-300">shadcn/ui (Radix primitives)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Accessible, unstyled primitives: Select, Slider, Popover, Command, Tabs, Button, Switch, Card, Input</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Icons</td><td class="border border-slate-700 px-4 py-2 text-slate-300">lucide-react</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Consistent icon library matching design system spec</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">State Management</td><td class="border border-slate-700 px-4 py-2 text-slate-300">React hooks (`useReducer`) + nuqs</td><td class="border border-slate-700 px-4 py-2 text-slate-300">URL-synced state for shareability; no external state library needed for single-page utility</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Animations</td><td class="border border-slate-700 px-4 py-2 text-slate-300">framer-motion</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Layout transitions on font/scale changes; micro-interactions</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Font Loading</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Google Fonts CSS API v2</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`font-display: swap` for non-blocking; localStorage cache with 24h TTL</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">HTTP/Caching</td><td class="border border-slate-700 px-4 py-2 text-slate-300">@tanstack/react-query</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Google Fonts API caching and pre-fetching</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Notifications</td><td class="border border-slate-700 px-4 py-2 text-slate-300">react-hot-toast</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Copy-to-clipboard confirmations</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Package Manager</td><td class="border border-slate-700 px-4 py-2 text-slate-300">npm</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Standard for Next.js ecosystem</td></tr>
+</table></div>
+<h2 class="text-2xl font-semibold mb-4 mt-8">2. Project Structure</h2>
+<pre class="bg-slate-800 p-4 rounded-lg overflow-x-auto mb-4"><code>
+Frontend/
+├── public/                          # Static assets
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx               # Root layout: Geist font, metadata, theme provider
+│   │   ├── page.tsx                 # Main workspace page (single-page app)
+│   │   └── globals.css              # Tailwind v4 + shadcn theme variables
+│   ├── components/
+│   │   ├── ui/                      # shadcn/ui primitives (auto-generated)
+│   │   │   ├── button.tsx
+│   │   │   ├── card.tsx
+│   │   │   ├── command.tsx
+│   │   │   ├── dialog.tsx
+│   │   │   ├── input.tsx
+│   │   │   ├── input-group.tsx
+│   │   │   ├── label.tsx
+│   │   │   ├── popover.tsx
+│   │   │   ├── select.tsx
+│   │   │   ├── slider.tsx
+│   │   │   ├── switch.tsx
+│   │   │   ├── tabs.tsx
+│   │   │   └── textarea.tsx
+│   │   ├── layout/                  # Workspace layout components
+│   │   │   ├── workspace.tsx        # Main split-screen container
+│   │   │   ├── left-panel.tsx       # Left control panel (dark)
+│   │   │   └── right-panel.tsx      # Right preview canvas (light)
+│   │   ├── controls/               # Control panel components
+│   │   │   ├── scale-calculator.tsx # Interval selector + base size + slider
+│   │   │   ├── font-controller.tsx  # Dual font selector + lock/roll
+│   │   │   ├── viewport-config.tsx  # Desktop/mobile dual config
+│   │   │   └── sync-toggle.tsx      # Desktop/mobile sync toggle
+│   │   ├── preview/                # Preview canvas components
+│   │   │   ├── preview-canvas.tsx   # Canvas container with viewport toggle
+│   │   │   ├── hierarchy-waterfall.tsx # Tabular scale step display
+│   │   │   └── ui-preview/         # Full shadcn UI page blocks
+│   │   │       ├── navbar.tsx
+│   │   │       ├── hero-section.tsx
+│   │   │       ├── feature-cards.tsx
+│   │   │       ├── blog-excerpt.tsx
+│   │   │       └── footer.tsx
+│   │   ├── export/                 # Code export components
+│   │   │   ├── code-export.tsx      # Tabbed export panel
+│   │   │   └── export-format.tsx    # Single format display + copy
+│   │   └── shared/                 # Shared UI components
+│   │       ├── theme-toggle.tsx     # Dark/light mode toggle
+│   │       └── url-share.tsx        # Copy share link button
+│   ├── lib/
+│   │   ├── utils.ts                # shadcn cn() helper
+│   │   ├── scale.ts                # Type scale computation engine
+│   │   ├── fonts.ts                # Google Fonts API client + cache
+│   │   ├── pairings.ts             # Curated font pairings dataset
+│   │   ├── export.ts               # Code generation (CSS, Tailwind, JSON)
+│   │   └── url.ts                  # URL state serialization
+│   └── hooks/
+│       ├── use-scale.ts            # Scale state + computation
+│       ├── use-fonts.ts            # Font loading + search
+│       ├── use-pairings.ts         # Lock & Roll pairing logic
+│       ├── use-viewport.ts         # Desktop/mobile config state
+│       └── use-url-state.ts        # nuqs-based URL sync
+├── package.json
+├── tsconfig.json
+├── next.config.ts
+├── postcss.config.mjs
+└── eslint.config.mjs
+</code></pre>
+<h2 class="text-2xl font-semibold mb-4 mt-8">3. Component Architecture</h2>
+<h3 class="text-xl font-semibold mb-3 mt-6">Layout Components</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><th class="border border-slate-700 px-4 py-2 text-slate-300">Component</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Props</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Description</th></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`Workspace`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">none</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Root split-screen: left panel (300px) + right panel (fluid). Manages workspace-level state via React Context.</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`LeftPanel`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">none</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Dark control panel container. Houses ScaleCalculator, FontController, ViewportConfig sections with dividers.</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`RightPanel`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`viewportWidth: 'desktop' \</td><td class="border border-slate-700 px-4 py-2 text-slate-300">'mobile' \</td><td class="border border-slate-700 px-4 py-2 text-slate-300">'fluid'`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Preview canvas container. Toggles between UI preview and hierarchy waterfall.</td></tr>
+</table></div>
+<h3 class="text-xl font-semibold mb-3 mt-6">Control Components</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><th class="border border-slate-700 px-4 py-2 text-slate-300">Component</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Props</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Description</th></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`ScaleCalculator`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">none</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Interval Select dropdown, base size Input, steps up/down controls, ratio Slider. All controlled via shared state.</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`FontController`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">none</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Header + Body font Comboboxes (Popover + Command), lock toggles, Roll button with Spacebar handler.</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`ViewportConfig`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">none</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Desktop base size + ratio, Mobile base size + ratio, independent sliders. Sync toggle.</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`SyncToggle`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`sync: boolean, onSyncChange: fn`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Toggle to link desktop/mobile controls. When active, mobile mirrors desktop values.</td></tr>
+</table></div>
+<h3 class="text-xl font-semibold mb-3 mt-6">Preview Components</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><th class="border border-slate-700 px-4 py-2 text-slate-300">Component</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Props</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Description</th></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`PreviewCanvas`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`mode: 'layout' \</td><td class="border border-slate-700 px-4 py-2 text-slate-300">'waterfall'`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Container that conditionally renders HierarchyWaterfall or shadcn UI preview blocks.</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`HierarchyWaterfall`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`scale: ScaleStep[]`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Renders each scale step as a row: label, sample text, px, rem, line-height, letter-spacing, weight, contrast badge.</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`Navbar`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`fonts, scale`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Full-width nav with Logo, nav links, CTA button — rendered with configured header font.</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`HeroSection`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`fonts, scale`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Headline + subheadline + CTA buttons. Headline uses header font at h1 scale.</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`FeatureCards`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`fonts, scale`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">3-column grid of feature cards (icon, title, description) using content from copy.md.</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`BlogExcerpt`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`fonts, scale`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Blog post cards with category tag, title, excerpt.</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`Footer`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`fonts, scale`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Tagline, link columns, legal text.</td></tr>
+</table></div>
+<h3 class="text-xl font-semibold mb-3 mt-6">Export Components</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><th class="border border-slate-700 px-4 py-2 text-slate-300">Component</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Props</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Description</th></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`CodeExport`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`scale: ScaleStep[], fonts: FontPairing`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Tab bar (CSS, Tailwind v3, Tailwind v4, JSON) + active code block. Updates on scale change.</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`ExportFormat`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`code: string, format: string`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Syntax-highlighted code block with Copy button. Shows toast on copy.</td></tr>
+</table></div>
+<h3 class="text-xl font-semibold mb-3 mt-6">Shared Components</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><th class="border border-slate-700 px-4 py-2 text-slate-300">Component</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Props</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Description</th></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`ThemeToggle`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">none</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Sun/Moon icon button. Toggles `.dark` class on `<html>`. Persists via URL state.</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`UrlShare`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">none</td><td class="border border-slate-700 px-4 py-2 text-slate-300">"Copy Share Link" button. Copies current URL (with all state params) to clipboard.</td></tr>
+</table></div>
+<h2 class="text-2xl font-semibold mb-4 mt-8">4. State Architecture</h2>
+<h3 class="text-xl font-semibold mb-3 mt-6">State Shape</h3>
+<pre class="bg-slate-800 p-4 rounded-lg overflow-x-auto mb-4"><code>
+interface WorkspaceState {
+scale: {
+baseSize: number;          // px, default 16
+ratio: number;             // 1.067–1.618
+stepsUp: number;           // 1–6, default 4
+stepsDown: number;         // 0–3, default 1
+};
+desktopScale: {
+baseSize: number;          // px, default 16
+ratio: number;             // default 1.333
+};
+mobileScale: {
+baseSize: number;          // px, default 14
+ratio: number;             // default 1.2
+};
+fonts: {
+header: string | null;     // Google Fonts family name
+body: string | null;       // Google Fonts family name
+headerLocked: boolean;
+bodyLocked: boolean;
+headerWeight: number;      // 100–900
+bodyWeight: number;        // 100–900
+};
+viewport: {
+mode: 'desktop' | 'mobile' | 'fluid';
+sync: boolean;             // sync desktop/mobile controls
+};
+preview: {
+mode: 'layout' | 'waterfall';
+customText: string;        // custom preview text input
+};
+theme: 'light' | 'dark' | 'system';
+}
+</code></pre>
+<h3 class="text-xl font-semibold mb-3 mt-6">State Management Flow</h3>
+<pre class="bg-slate-800 p-4 rounded-lg overflow-x-auto mb-4"><code>
+URL Query Params (nuqs)
+↕
+useReducer (workspace state)
+↕
+React Context Provider
+↕
+Individual hook consumers
+↕
+Component renders
+</code></pre>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">**Source of truth**: React <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">useReducer</code> holds the workspace state</li>
+<li class="text-slate-300">**URL sync**: <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">nuqs</code> watches state changes and syncs to URL query params via <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">history.replaceState</code> (debounced 500ms)</li>
+<li class="text-slate-300">**On page load**: URL params are read and restored; invalid/missing params fall back to defaults</li>
+<li class="text-slate-300">**Share**: Full state encoded in URL — recipient sees identical workspace</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Data Flow for Key Actions</h3>
+<p class="text-slate-300 mb-4"><strong>Scale ratio change:</strong></p>
+<p class="text-slate-300 mb-4">1. User selects "Perfect Fourth" from Select dropdown</p>
+<p class="text-slate-300 mb-4">2. <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">useScale</code> hook dispatches <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">SET_RATIO</code> action</p>
+<p class="text-slate-300 mb-4">3. Reducer updates <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">scale.ratio</code> to 1.333</p>
+<p class="text-slate-300 mb-4">4. <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">nuqs</code> syncs new ratio to URL</p>
+<p class="text-slate-300 mb-4">5. Scale computation engine recalculates all steps</p>
+<p class="text-slate-300 mb-4">6. HierarchyWaterfall re-renders with new computed values</p>
+<p class="text-slate-300 mb-4">7. shadcn UI preview blocks re-render with new font sizes</p>
+<p class="text-slate-300 mb-4"><strong>Font roll:</strong></p>
+<p class="text-slate-300 mb-4">1. User locks header font (toggle lock icon → <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">fonts.headerLocked = true</code>)</p>
+<p class="text-slate-300 mb-4">2. User clicks "Roll" button (or presses Space)</p>
+<p class="text-slate-300 mb-4">3. <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">usePairings</code> hook checks which font is unlocked</p>
+<p class="text-slate-300 mb-4">4. If body is unlocked: pick next body font from curated pairings dataset</p>
+<p class="text-slate-300 mb-4">5. Dispatch <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">SET_BODY_FONT</code> action</p>
+<p class="text-slate-300 mb-4">6. Google Fonts CSS loads the new body font via <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">font-display: swap</code></p>
+<p class="text-slate-300 mb-4">7. framer-motion animates the font transition in preview blocks</p>
+<p class="text-slate-300 mb-4"><strong>Code export copy:</strong></p>
+<p class="text-slate-300 mb-4">1. User clicks "Copy" button on CSS tab</p>
+<p class="text-slate-300 mb-4">2. <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">navigator.clipboard.writeText()</code> copies the generated CSS</p>
+<p class="text-slate-300 mb-4">3. <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">react-hot-toast</code> shows "Copied!" confirmation</p>
+<p class="text-slate-300 mb-4">4. The export code is pre-computed by <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">lib/export.ts</code> from current scale state</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">5. API Design</h2>
+<p class="text-slate-300 mb-4">This application is primarily client-side. Only one API endpoint is needed:</p>
+<h3 class="text-xl font-semibold mb-3 mt-6">GET /api/fonts</h3>
+<p class="text-slate-300 mb-4">Proxies the Google Fonts CSS API to support server-side font list aggregation.</p>
+<p class="text-slate-300 mb-4"><strong>Response:</strong></p>
+<pre class="bg-slate-800 p-4 rounded-lg overflow-x-auto mb-4"><code>
+{
+"items": [
+{
+"family": "Inter",
+"variants": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+"subsets": ["latin", "latin-ext"],
+"category": "sans-serif",
+"variable": true,
+"axes": [
+{ "tag": "wght", "min": 100, "max": 900 }
+]
+}
+]
+}
+</code></pre>
+<p class="text-slate-300 mb-4"><strong>Implementation:</strong> A server-side function in <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">src/lib/fonts.ts</code> that:</p>
+<p class="text-slate-300 mb-4">1. Fetches the Google Fonts API on the server (avoids CORS issues)</p>
+<p class="text-slate-300 mb-4">2. Caches the response in <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">localStorage</code> with 24h TTL</p>
+<p class="text-slate-300 mb-4">3. Returns the parsed and deduplicated font list</p>
+<p class="text-slate-300 mb-4"><strong>No other API endpoints needed</strong> — the app is a fully client-side utility. All state lives in URL params.</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">6. Scale Computation Engine</h2>
+<p class="text-slate-300 mb-4">Located in <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">src/lib/scale.ts</code>:</p>
+<pre class="bg-slate-800 p-4 rounded-lg overflow-x-auto mb-4"><code>
+// Musical intervals
+const INTERVALS = {
+'Minor Second': 1.067,
+'Major Second': 1.125,
+'Minor Third': 1.2,
+'Major Third': 1.25,
+'Perfect Fourth': 1.333,
+'Augmented Fourth': 1.414,
+'Perfect Fifth': 1.5,
+'Golden Ratio': 1.618,
+};
+interface ScaleStep {
+name: string;            // "h1", "h2", "base", "sm", "xs", "caption"
+step: number;            // step index (positive = above base, negative = below)
+px: number;              // computed px value
+rem: number;             // computed rem value (relative to 16px base)
+lineHeight: number;      // auto: 1.2 for display, 1.5 for body
+letterSpacing: number;   // tighter for larger sizes
+fontWeight: number;      // configurable
+sample: string;          // sample text rendered in the selected font
+}
+function computeScale(
+baseSize: number,
+ratio: number,
+stepsUp: number,
+stepsDown: number
+): ScaleStep[] { ... }
+</code></pre>
+<p class="text-slate-300 mb-4"><strong>Step naming convention:</strong></p>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><th class="border border-slate-700 px-4 py-2 text-slate-300">Step</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Name</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Example (16px, 1.333)</th></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">+4</td><td class="border border-slate-700 px-4 py-2 text-slate-300">h1</td><td class="border border-slate-700 px-4 py-2 text-slate-300">50.52px</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">+3</td><td class="border border-slate-700 px-4 py-2 text-slate-300">h2</td><td class="border border-slate-700 px-4 py-2 text-slate-300">37.90px</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">+2</td><td class="border border-slate-700 px-4 py-2 text-slate-300">h3</td><td class="border border-slate-700 px-4 py-2 text-slate-300">28.43px</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">+1</td><td class="border border-slate-700 px-4 py-2 text-slate-300">h4</td><td class="border border-slate-700 px-4 py-2 text-slate-300">21.33px</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">0</td><td class="border border-slate-700 px-4 py-2 text-slate-300">base</td><td class="border border-slate-700 px-4 py-2 text-slate-300">16px</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">-1</td><td class="border border-slate-700 px-4 py-2 text-slate-300">sm</td><td class="border border-slate-700 px-4 py-2 text-slate-300">12px</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">-2</td><td class="border border-slate-700 px-4 py-2 text-slate-300">xs</td><td class="border border-slate-700 px-4 py-2 text-slate-300">9px</td></tr>
+</table></div>
+<h2 class="text-2xl font-semibold mb-4 mt-8">7. Dependencies</h2>
+<pre class="bg-slate-800 p-4 rounded-lg overflow-x-auto mb-4"><code>
+{
+"dependencies": {
+"next": "^16.2.9",
+"react": "^19.2.0",
+"react-dom": "^19.2.0",
+"lucide-react": "^1.21.0",
+"framer-motion": "^12.41.0",
+"nuqs": "^2.8.9",
+"react-hot-toast": "^2.6.0",
+"@tanstack/react-query": "^5.101.0",
+"class-variance-authority": "^0.7.1",
+"clsx": "^2.1.1",
+"tailwind-merge": "^3.6.0"
+},
+"devDependencies": {
+"@types/node": "^20",
+"@types/react": "^19",
+"@types/react-dom": "^19",
+"typescript": "^5",
+"tailwindcss": "^4",
+"@tailwindcss/postcss": "^4",
+"eslint": "^9",
+"eslint-config-next": "^16.2.9"
+}
+}
+</code></pre>
+<h2 class="text-2xl font-semibold mb-4 mt-8">8. Performance Considerations</h2>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Concern</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Strategy</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Font loading</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`font-display: swap` + preconnect to Google Fonts CDN; load fonts on demand, not on mount</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">URL sync</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Debounce URL updates 500ms to avoid excessive history entries</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Scale computation</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Memoized via `useMemo` — only recalculates when baseSize, ratio, or steps change</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Component rendering</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Client Components isolated to interactive parts; static shell uses RSC</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Bundle size</td><td class="border border-slate-700 px-4 py-2 text-slate-300">shadcn components are tree-shakable; lucide-react supports icon-level imports</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Layout shifts</td><td class="border border-slate-700 px-4 py-2 text-slate-300">framer-motion `AnimatePresence` for font/scale changes; fixed dimensions for preview canvas</td></tr>
+</table></div>
+    </main>
+    <footer class="border-t border-slate-800 mt-12 py-8">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-500 text-sm">
+            typepairing — System Architecture
+        </div>
+    </footer>
+</body>
+</html>

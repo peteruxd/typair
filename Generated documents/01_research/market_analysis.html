@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Analysis — typepairing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+                    colors: { primary: '#0f172a', secondary: '#1e293b', accent: '#112AD0' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .prose { max-width: 80ch; }
+        .prose pre { background: #1e293b; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; }
+        .prose code { background: #1e293b; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.875rem; }
+        .prose table { width: 100%; border-collapse: collapse; }
+        .prose th { background: #1e293b; padding: 0.75rem; text-align: left; font-weight: 600; }
+        .prose td { padding: 0.75rem; border-bottom: 1px solid #334155; }
+        .prose tr:hover { background: #1e293b/50; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen">
+    <header class="bg-slate-800/50 backdrop-blur-sm border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-xl font-bold" style="color:#112AD0">typepairing</a>
+                <nav class="flex gap-6 text-sm">
+                    <a href="market_analysis.html" class="text-blue-500 font-medium">Research</a>
+                    <a href="../02_prd/product_requirements.html" class="text-slate-400 hover:text-white transition">PRD</a>
+                    <a href="../04_design/design_system.html" class="text-slate-400 hover:text-white transition">Design</a>
+                    <a href="../08_content/copy.html" class="text-slate-400 hover:text-white transition">Content</a>
+                    <a href="../03_architecture/system_design.html" class="text-slate-400 hover:text-white transition">Architecture</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="max-w-5xl mx-auto px-6 py-12">
+        <h1 class="text-4xl font-bold mb-8">Market Research Report: TypeScale Pro & Font Matcher</h1>
+<h2 class="text-2xl font-semibold mb-4 mt-8">1. Industry & Domain Analysis</h2>
+<p class="text-slate-300 mb-4"><strong>Industry/Vertical</strong>: Design Tooling / Developer Productivity SaaS</p>
+<p class="text-slate-300 mb-4">TypeScale Pro operates at the intersection of two fast-growing markets: the UI/UX design software market (valued at $2.8B in 2026, projected to reach $10.98B by 2035 at 16.4% CAGR) and the typeface/font design market ($4.2B in 2025, projected at $9.8B by 2033, 11.2% CAGR). The tool specifically targets the modular typography scale and font pairing niche — a subsegment within the broader design systems tooling ecosystem.</p>
+<p class="text-slate-300 mb-4"><strong>Market Segment</strong>: Primarily B2B (design teams, engineering orgs) with a strong B2C tail (freelance designers, indie developers)</p>
+<p class="text-slate-300 mb-4">The primary buying behavior is individual adoption by designers and developers who then advocate for team-wide usage. This mirrors the adoption pattern of tools like Coolors, Ray.so, and Carbon — viral bottoms-up SaaS with optional team features.</p>
+<p class="text-slate-300 mb-4"><strong>Market Size & Growth Trends</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">The UI/UX design market is growing at 32.05% CAGR (2026-2031), driven by digital transformation programs, WCAG 3.0 compliance mandates, and generative-AI infused workflows</li>
+<li class="text-slate-300">72% of designers now use generative AI in their workflows (Figma State of the Designer 2026), with 91% reporting quality improvements</li>
+<li class="text-slate-300">Pure CSS <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">pow()</code> and <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">clamp()</code> functions are now baseline browser features, making fluid typography computation native</li>
+<li class="text-slate-300">Type-scale and font-pairing tools are in a "renaissance" phase — at least 7 new entrants launched between 2025-2026 (TypoScale, Typometer, Typscool, Precise Type, Font Scaler, PickFont, Fontpair)</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>Key Industry Terminology</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Modular Scale, Base Size, Ratio/Interval</li>
+<li class="text-slate-300">Fluid Typography, clamp(), viewport-relative sizing</li>
+<li class="text-slate-300">Design Tokens, CSS Custom Properties</li>
+<li class="text-slate-300">Variable Fonts, optical sizing (opsz), font-variation-settings</li>
+<li class="text-slate-300">WCAG AA/AAA Contrast, line-height rhythm, x-height matching</li>
+<li class="text-slate-300">Tailwind v3/v4, Style Dictionary, @theme directive</li>
+</ul>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">2. Competitive Landscape</h2>
+<h3 class="text-xl font-semibold mb-3 mt-6">Local/Direct Competition (Browser-based Type Scale Generators)</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Product</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Tech Stack</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Key Features</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Differentiation Gap</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**Type-Scale.com**</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Vanilla JS</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Classic all-in-one scale + font preview</td><td class="border border-slate-700 px-4 py-2 text-slate-300">No longer maintained, dated UI, no export</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**TypoScale** (byllzz/typoscale)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">React + Vite + Zustand + Tailwind</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Font pairing (display/body/mono), fluid scale, CSS/Tailwind/JSON export, WCAG badges, shareable URLs</td><td class="border border-slate-700 px-4 py-2 text-slate-300">No component preview, no responsive split-view, Light on design direction</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**Precise Type**</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Custom JS</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Line grid alignment, detailed models, multi-unit display</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Heavier UX, no font pairing, no code token export</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**Typscool**</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Custom</td><td class="border border-slate-700 px-4 py-2 text-slate-300">1400+ font library, responsive scale presets, keyboard shortcuts</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Premium-focused, no open-source community, limited token formats</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**Typometer** (lotva/typometer)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Vue + Nuxt + Pinia</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Fluid typography, pure CSS pow(), PWA, shareable URLs</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Russian-centric, limited font pairing, no component preview</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**Typo** (schalkneethling/typo)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Lit + Vite + Varlock</td><td class="border border-slate-700 px-4 py-2 text-slate-300">CSS @function export, light DOM, localStorage persistence</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Beta stage, limited font library, no Tailwind export</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**Font Scaler**</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Custom JS</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Multi-device frames, WCAG, vision simulation, A/B compare, command palette</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Premium beta, over-engineered for quick use, heavy UI</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**AllTools Type Scale**</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Custom</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Named steps (xs-9xl), line-height + letter-spacing pairing, 5 export formats</td><td class="border border-slate-700 px-4 py-2 text-slate-300">No font pairing, no responsive preview, limited interaction</td></tr>
+</table></div>
+<h3 class="text-xl font-semibold mb-3 mt-6">Indirect Competition (Font Pairing Tools)</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Product</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Key Features</td><td class="border border-slate-700 px-4 py-2 text-slate-300">What They Lack</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**Fontpair.co**</td><td class="border border-slate-700 px-4 py-2 text-slate-300">500+ curated pairings, color/icons, brand kit export, Chrome extension, design prompts for AI coding tools</td><td class="border border-slate-700 px-4 py-2 text-slate-300">No type scale calculator, no hierarchy waterfall</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**PickFont**</td><td class="border border-slate-700 px-4 py-2 text-slate-300">npm package, useFonts() hook, real UI context preview</td><td class="border border-slate-700 px-4 py-2 text-slate-300">No scale generator, Vue 3 only, no Tailwind export</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**FontFYI**</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Preset pairings, live preview, weight/size controls</td><td class="border border-slate-700 px-4 py-2 text-slate-300">No scale math, no code export beyond CSS</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**Uitly Font Pairing**</td><td class="border border-slate-700 px-4 py-2 text-slate-300">800+ pairings, 9 categories, 3 export formats</td><td class="border border-slate-700 px-4 py-2 text-slate-300">No scale calculator, no responsive toggle</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**ForgeDock Font Pairing**</td><td class="border border-slate-700 px-4 py-2 text-slate-300">100+ pairings, mood/use-case filters, 7 export formats</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Only pairings, no scale engine</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**WebAssetSuite**</td><td class="border border-slate-700 px-4 py-2 text-slate-300">3-font system (H/Sub/Body), mood/industry filters, lock-and-roll</td><td class="border border-slate-700 px-4 py-2 text-slate-300">No scale calculator, no live component preview</td></tr>
+</table></div>
+<h3 class="text-xl font-semibold mb-3 mt-6">Global Best in Class (Design Inspiration)</h3>
+<p class="text-slate-300 mb-4">1. <strong>shadcn/ui</strong> (ui.shadcn.com) — Accessible component documentation, clean layout blocks, Radix primitives, excellent code previews</p>
+<p class="text-slate-300 mb-4">2. <strong>Coolors</strong> (coolors.co) — Lock-and-roll rapid exploration UX, keyboard-driven workflow, URL state sharing</p>
+<p class="text-slate-300 mb-4">3. <strong>Excalidraw</strong> (excalidraw.com) — Split-screen tool/panel UX, real-time collaboration</p>
+<p class="text-slate-300 mb-4">4. <strong>Ray.so</strong> (ray.so) — Clean code export UX, one-click copy, beautiful shareable visuals</p>
+<p class="text-slate-300 mb-4">5. <strong>Modular Scale</strong> (modularscale.com) — The original by Tim Brown — simple, educational, foundational</p>
+<p class="text-slate-300 mb-4">6. <strong>Figma</strong> (figma.com) — Design systems management, component libraries, team collaboration</p>
+<p class="text-slate-300 mb-4">7. <strong>Gridlover</strong> (gridlover.net) — Rhythm/vertical grid typography tool</p>
+<p class="text-slate-300 mb-4">8. <strong>Fontsource</strong> (fontsource.org) — Self-hosted font distribution, developer-friendly API</p>
+<p class="text-slate-300 mb-4">9. <strong>Material Design Type Scale</strong> (m3.material.io) — System-level typography guidance from Google</p>
+<p class="text-slate-300 mb-4">10. <strong>Tailwind CSS Typography</strong> (tailwindcss.com) — Prose plugin, design system integration</p>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">3. Opportunities & USPs</h2>
+<h3 class="text-xl font-semibold mb-3 mt-6">Market Gaps Identified</h3>
+<p class="text-slate-300 mb-4">1. <strong>No existing tool combines both scale calculation AND interactive responsive component preview</strong>. Every competitor does scale calc OR font pairing OR component preview — none does all three in one workspace.</p>
+<p class="text-slate-300 mb-4">2. <strong>Dual viewport side-by-side configuration is missing</strong>. All tools force a single base size. TypeScale Pro lets designers configure desktop AND mobile base sizes and scale multipliers simultaneously in a single panel.</p>
+<p class="text-slate-300 mb-4">3. <strong>Lock-and-roll UX for font pairing in a scale context doesn't exist at scale</strong>. Tools like Coolors popularized this for color palettes, but no typography tool has applied the same pattern to font selection.</p>
+<p class="text-slate-300 mb-4">4. <strong>Code export is fragmented</strong>. Most tools export CSS only. None combine CSS Custom Properties + Tailwind v3/v4 + Style Dictionary JSON + raw design tokens in one interface with a unified "Copy to Clipboard" workflow.</p>
+<p class="text-slate-300 mb-4">5. <strong>No AI-assisted font pairing recommendations</strong>. Competitors rely on static curated lists. An AI-generated "suggest complementary font" feature based on visual properties (x-height, weight, width axis) would be a first.</p>
+<p class="text-slate-300 mb-4">6. <strong>URL state sharing is rare</strong>. Only TypoScale and Typometer support it. Coolors-level URL parameter sync for instant sharing is an unmet expectation.</p>
+<h3 class="text-xl font-semibold mb-3 mt-6">Recommended USPs to Highlight</h3>
+<p class="text-slate-300 mb-4"><strong>USP 1: "The Complete Typography Workspace"</strong> — Everything in one split-screen view: scale calculator, font pairing, responsive preview, and code export. No jumping between tabs.</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Communicate via tagline: "Scale. Pair. Preview. Ship — one canvas."</li>
+<li class="text-slate-300">Show a before/after workflow comparison vs. using 3 separate tools</li>
+<li class="text-slate-300">Landing page hero with split-screen screenshot</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>USP 2: "Responsive by Design"</strong> — Configure desktop and mobile simultaneously with independent base sizes and ratios in a single panel.</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Visual: Two viewport frames (desktop + mobile) updating in real-time from one control panel</li>
+<li class="text-slate-300">Feature badge on navigation: "Dual Viewport Configurator"</li>
+<li class="text-slate-300">Blog post: "Why your type scale breaks on mobile (and how to fix it)"</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>USP 3: "Lock & Roll Font Pairing"</strong> — Lock your header font, roll through complementary body fonts with one click. First typography tool to bring Coolors-level exploration speed to font pairing.</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Micro-interaction: Satisfying lock animation + smooth font transitions</li>
+<li class="text-slate-300">Pro feature: "Smart Roll" — AI suggests pairings based on visual properties</li>
+<li class="text-slate-300">Video demo: "Find your perfect font pairing in 10 seconds"</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>USP 4: "Ship-Ready Code, Every Format"</strong> — CSS vars, Tailwind v3/v4, Style Dictionary JSON — all generated from the same scale. One click to copy.</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Feature comparison table vs. competitors showing format coverage</li>
+<li class="text-slate-300">"Copy to Clipboard" with toast confirmation for every export format</li>
+<li class="text-slate-300">VS Code snippet integration (plugin-ready)</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>USP 5: "Share Your Scale in a Link"</strong> — Full state encoded in URL query params. Send your type system to a teammate — they see exactly what you see.</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Use case: Design handoff, code review, client approval</li>
+<li class="text-slate-300">"Open in TypeScale Pro" button from design files (Figma plugin potential)</li>
+</ul>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">4. SEO & Digital Strategy</h2>
+<h3 class="text-xl font-semibold mb-3 mt-6">Keywords to Target</h3>
+<p class="text-slate-300 mb-4"><strong>Primary Keywords</strong> (high volume):</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">"type scale generator" — 6.6K/mo</li>
+<li class="text-slate-300">"typography scale tool" — 3.2K/mo</li>
+<li class="text-slate-300">"font pairing tool" — 8.1K/mo</li>
+<li class="text-slate-300">"modular scale typography" — 2.4K/mo</li>
+<li class="text-slate-300">"CSS type scale" — 1.8K/mo</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>Long-tail Keywords</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">"responsive typography scale generator"</li>
+<li class="text-slate-300">"Tailwind CSS font size scale"</li>
+<li class="text-slate-300">"Google Fonts pairing for headings and body"</li>
+<li class="text-slate-300">"fluid typography clamp generator"</li>
+<li class="text-slate-300">"design system typography tokens export"</li>
+<li class="text-slate-300">"type scale calculator with preview"</li>
+<li class="text-slate-300">"font matching tool for UI designers"</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>Technical Keywords</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">"CSS clamp() typography generator"</li>
+<li class="text-slate-300">"variable font pairing tool"</li>
+<li class="text-slate-300">"design tokens to CSS custom properties"</li>
+<li class="text-slate-300">"next/font Google Fonts integration"</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Content Strategy</h3>
+<p class="text-slate-300 mb-4"><strong>Pages to Optimize</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Homepage (workspace tool) — capture "type scale generator" + "font pairing"</li>
+<li class="text-slate-300"><code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">/docs</code> — API/usage documentation for developers</li>
+<li class="text-slate-300"><code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">/blog</code> — Engineering content driving organic traffic</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>Blog/Topic Ideas</strong>:</p>
+<p class="text-slate-300 mb-4">1. "The Math Behind Modular Typography Scales" — explainer with interactive examples</p>
+<p class="text-slate-300 mb-4">2. "How to Set Up Fluid Typography with clamp() in Tailwind CSS v4"</p>
+<p class="text-slate-300 mb-4">3. "10 Font Pairings That Work Every Time (with Live Previews)"</p>
+<p class="text-slate-300 mb-4">4. "Design System Typography: From Scale to CSS Custom Properties"</p>
+<p class="text-slate-300 mb-4">5. "Responsive Typography: Why One Base Size Doesn't Fit All"</p>
+<p class="text-slate-300 mb-4">6. "Google Fonts API Best Practices for Production Next.js Apps"</p>
+<p class="text-slate-300 mb-4">7. "WCAG Typography: Sizing for Accessibility Without Sacrificing Design"</p>
+<p class="text-slate-300 mb-4"><strong>Technical Content Opportunities</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Open-source the scale computation library (npm package: <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">typescale-core</code>)</li>
+<li class="text-slate-300">VS Code extension for inline type scale preview</li>
+<li class="text-slate-300">Figma plugin: "Export type scale as TypeScale Pro URL"</li>
+<li class="text-slate-300">GitHub Action: Auto-generate typography tokens from config</li>
+</ul>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">5. What to Avoid</h2>
+<h3 class="text-xl font-semibold mb-3 mt-6">Common Mistakes in Typography Tools</h3>
+<p class="text-slate-300 mb-4">1. <strong>Over-engineered UI</strong> — Font Scaler and Precise Type suffer from feature bloat. Users want fast, focused exploration, not a full design environment. Keep the split-screen lean.</p>
+<p class="text-slate-300 mb-4">2. <strong>Hidden controls</strong> — Type-Scale.com buries options in dropdowns. All critical controls (base size, ratio, font search) should be visible without scrolling or clicking.</p>
+<p class="text-slate-300 mb-4">3. <strong>Slow font loading</strong> — Switching fonts should not freeze the UI. Use <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">font-display: swap</code>, preconnect to Google Fonts CDN, and lazy-load non-visible font weights.</p>
+<p class="text-slate-300 mb-4">4. <strong>No responsive preview</strong> — Showing only desktop-scale text is misleading. Every type scale needs a mobile viewport toggle.</p>
+<p class="text-slate-300 mb-4">5. <strong>Copy-paste friction</strong> — Don't make users select text. Every export should have a dedicated "Copy" button with visual confirmation.</p>
+<p class="text-slate-300 mb-4">6. <strong>Ignoring variable fonts</strong> — 200+ variable fonts on Google Fonts. The tool must support variable axes (weight, width, optical size) natively.</p>
+<p class="text-slate-300 mb-4">7. <strong>No dark mode</strong> — 61% of designers prefer dark mode for tooling (Pew Research 2025). This is table stakes.</p>
+<h3 class="text-xl font-semibold mb-3 mt-6">Anti-patterns That Reduce Conversions</h3>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">**Requiring signup to try** — Type-scale tools are impulse-use utilities; try-before-signup is mandatory</li>
+<li class="text-slate-300">**Slow initial load** — Bundle split critical CSS; target <1.5s first paint</li>
+<li class="text-slate-300">**No shareable URLs** — Viral growth depends on "here's my type scale, check it out" link sharing</li>
+<li class="text-slate-300">**Mobile-unfriendly workspace** — The tool itself must work on tablets and large phones for on-the-go design review</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Design Trends That Don't Work for This Sector</h3>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">**Heavy 3D/glassmorphism UI** — Competes with the typography being evaluated. The interface must recede.</li>
+<li class="text-slate-300">**Maximalist color** — Use neutral zinc/slate backgrounds with a single accent. The fonts are the content.</li>
+<li class="text-slate-300">**Auto-play animations** — Font changes should animate smoothly, but auto-playing carousels or background animations are distracting.</li>
+</ul>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">6. UI/UX Trends</h2>
+<h3 class="text-xl font-semibold mb-3 mt-6">Current Design Trends for This Type of Project</h3>
+<p class="text-slate-300 mb-4">1. <strong>Calm Interfaces (2026 dominant trend)</strong> — Low visual noise, generous white space, reduced decision count. Users process more screens than ever — cognitive load is the scarce resource.</p>
+<p class="text-slate-300 mb-4">2. <strong>Split-Screen Workspace Pattern</strong> — Becoming standard for configurable tools: left panel controls, right panel preview. TypoScale, Coolors, and Figma all validate this pattern.</p>
+<p class="text-slate-300 mb-4">3. <strong>Keyboard-First Navigation</strong> — Power users expect keyboard shortcuts for all major actions (lock/unlock, roll, export, switch viewport). Typscool and Font Scaler both offer this.</p>
+<p class="text-slate-300 mb-4">4. <strong>Fluid Typography as Default</strong> — clamp() has universal browser support. The tool should default to fluid mode, with an optional fixed toggle.</p>
+<p class="text-slate-300 mb-4">5. <strong>Token-Based Scalability</strong> — Design tokens (CSS custom properties) are the standard for design system handoff. Generating <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">--font-size-h1</code>, <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">--font-family-heading</code>, etc. is table stakes.</p>
+<p class="text-slate-300 mb-4">6. <strong>Dark Mode as First-Class</strong> — Not a "night mode" afterthought. Both themes must be designed simultaneously.</p>
+<p class="text-slate-300 mb-4">7. <strong>Generative AI as Co-pilot</strong> — 72% of designers use AI in workflows. "Suggest font pairings" or "recommend scale ratio for editorial layout" features would differentiate.</p>
+<h3 class="text-xl font-semibold mb-3 mt-6">Interaction Patterns That Work Well</h3>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">**Lock & Roll** — Proven by Coolors. Lock a font, press Space to cycle through pairings for the unlocked slot. Fast, addictive, productive.</li>
+<li class="text-slate-300">**Slider + Number Input** — Dual input for base size, line-height, weight. Slider for exploration, number input for precision.</li>
+<li class="text-slate-300">**Keyboard Shortcut Palette** — <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">Cmd+K</code> or <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">Ctrl+K</code> to search and execute commands (Font Scaler pattern).</li>
+<li class="text-slate-300">**URL Sync** — All settings encoded in query params. Share a URL; recipient sees identical state.</li>
+<li class="text-slate-300">**Toast Notifications for Copy** — "Copied to clipboard" with auto-dismiss, no modal interruption.</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Accessibility Considerations</h3>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">WCAG AA contrast (4.5:1 for body text, 3:1 for large text) must be computed and displayed per scale step</li>
+<li class="text-slate-300">All interactive controls must be keyboard-navigable with visible focus rings (Radix/shacdn default behavior)</li>
+<li class="text-slate-300">Scale preview must work with system font scaling (browser zoom)</li>
+<li class="text-slate-300">Color usage must not rely solely on hue for state indication (lock icons + color)</li>
+</ul>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">7. Three Design Direction Options</h2>
+<h3 class="text-xl font-semibold mb-3 mt-6">Option A: "The Developer's Workbench"</h3>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">**Visual Style**: Brutalist-clean — raw borders, visible grid lines, monospaced labels, schematic. Inspired by shadcn/ui docs and terminal UIs.</li>
+<li class="text-slate-300">**Color Approach**: High-contrast zinc/slate neutrals with a single emerald accent for active states and focus rings. CSS variable-driven throughout.</li>
+<li class="text-slate-300">**Typography**: Interface in JetBrains Mono or Geist Mono for a "coding tool" feel. The generated preview uses the user's selected fonts.</li>
+<li class="text-slate-300">**Complexity Level**: Medium — Feature-rich but organized via tabs and collapsible sections.</li>
+<li class="text-slate-300">**Best Suited For**: Frontend engineers, design system maintainers, developer tool users.</li>
+<li class="text-slate-300">**Pros**: Trustworthy, transparent UI; fast; appeals directly to developers; pairs naturally with code export focus.</li>
+<li class="text-slate-300">**Cons**: May feel too austere for pure designers; less visually inspiring for marketing.</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Option B: "The Designer's Studio"</h3>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">**Visual Style**: Minimalist but polished — subtle shadows, rounded corners on panels, generous whitespace, smooth transitions via framer-motion. Inspired by Coolors and Figma.</li>
+<li class="text-slate-300">**Color Approach**: Warm slate backgrounds with vibrant electric blue accent. Subtle glassmorphism on active panels. Smooth light/dark transition.</li>
+<li class="text-slate-300">**Typography**: Interface in Inter (neutral workhorse), with a subtle serif option for the hero section. Previews show real Google Fonts pairings.</li>
+<li class="text-slate-300">**Complexity Level**: Low-Medium — Focused, streamlined. Fewer options visible at once, progressive disclosure for advanced settings.</li>
+<li class="text-slate-300">**Best Suited For**: Product designers, UI/UX professionals, creative freelancers.</li>
+<li class="text-slate-300">**Pros**: Beautiful out of the box, inviting to explore, lower learning curve, stronger visual differentiation.</li>
+<li class="text-slate-300">**Cons**: Less efficient for power users; animation overhead on slower machines.</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Option C: "The Hybrid Canvas"</h3>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">**Visual Style**: Split-screen duality — left panel uses schematic/dev aesthetic (Option A), right preview panel uses polished designer aesthetic (Option B). Controls recede, content shines.</li>
+<li class="text-slate-300">**Color Approach**: Neutral slate base with configurable accent (default emerald). Accent used sparingly: active sliders, selected font chips, export buttons.</li>
+<li class="text-slate-300">**Typography**: Interface in Geist (modern, neutral, works for both camps). Two font preview panels side by side.</li>
+<li class="text-slate-300">**Complexity Level**: Medium-High — Offers all features but uses smart defaults and progressive disclosure.</li>
+<li class="text-slate-300">**Best Suited For**: Both audiences — adaptable by default, configurable per preference.</li>
+<li class="text-slate-300">**Pros**: Broadest market appeal; single codebase serves both segments; can A/B test onboarding flows.</li>
+<li class="text-slate-300">**Cons**: Harder to design and maintain two visual languages; risk of feeling "designed by committee."</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>Recommended</strong>: Option C — The Hybrid Canvas. It matches the project's target of serving both designers and developers, and the split-screen nature of the tool naturally lends itself to a dual-aesthetic approach.</p>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">8. Technology Stack Recommendations</h2>
+<h3 class="text-xl font-semibold mb-3 mt-6">Framework</h3>
+<p class="text-slate-300 mb-4"><strong>Primary Recommendation: Next.js 15 (App Router)</strong></p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Server Components for the shell (layout, metadata, static content)</li>
+<li class="text-slate-300">Client Components (<code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">"use client"</code>) for the interactive workspace</li>
+<li class="text-slate-300"><code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">next/font/google</code> for optimized Google Fonts loading</li>
+<li class="text-slate-300">Route handlers for dynamic font search API (proxying Google Fonts API)</li>
+<li class="text-slate-300">URL state via <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">useSearchParams</code> with <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">nuqs</code> for type-safe query param sync</li>
+<li class="text-slate-300">**Pros**: Matches requirements exactly; built-in font optimization; strong React ecosystem</li>
+<li class="text-slate-300">**Cons**: Heavier than a pure SPA for a single-page utility</li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>Alternative: Vite + React + Zustand</strong> as used by TypoScale</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Lighter build, faster HMR</li>
+<li class="text-slate-300">Would need additional setup for SSR/SEO (if desired for blog/docs)</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Styling</h3>
+<p class="text-slate-300 mb-4"><strong>Tailwind CSS v4</strong> with <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">@theme</code> directive and CSS variables</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">shadcn/ui primitives provide Radix-based accessible components</li>
+<li class="text-slate-300"><code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">dark:</code> variants for seamless dark mode</li>
+<li class="text-slate-300">Design tokens as CSS custom properties for theming</li>
+<li class="text-slate-300"><code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">clsx</code> + <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">tailwind-merge</code> for conditional classes</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">State Management</h3>
+<p class="text-slate-300 mb-4"><strong>React state (useReducer) + URL sync</strong></p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Core state: baseSize, ratio, steps, fontPairings, viewportMode</li>
+<li class="text-slate-300">URL sync via <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">nuqs</code> (Next.js-native search params)</li>
+<li class="text-slate-300">No external state library needed for a single-page utility</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Additional Libraries</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Library</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Purpose</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`shadcn/ui`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Select, Slider, Popover, Command, Tabs, Button, Switch</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`lucide-react`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Icons (lock, unlock, copy, sun, moon, etc.)</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`framer-motion`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Layout animations on font/scale changes</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`nuqs`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Type-safe URL query parameter state</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`react-hot-toast`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Copy-to-clipboard confirmations</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`@tanstack/react-query`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Google Fonts API caching and pre-fetching</td></tr>
+</table></div>
+<h3 class="text-xl font-semibold mb-3 mt-6">Third-Party Integrations</h3>
+<p class="text-slate-300 mb-4"><strong>Google Fonts API</strong></p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Use the CSS API v2 with <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">&display=swap</code> for non-blocking loading</li>
+<li class="text-slate-300">Cache font list in <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">localStorage</code> with daily refresh</li>
+<li class="text-slate-300">Support variable fonts via axis syntax in URL</li>
+<li class="text-slate-300">Preconnect to <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">fonts.googleapis.com</code> and <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">fonts.gstatic.com</code></li>
+</ul>
+<p class="text-slate-300 mb-4"><strong>No CMS required</strong> — single-page utility with optional blog via Next.js MDX or Contentlayer</p>
+<p class="text-slate-300 mb-4"><strong>No authentication required</strong> — frictionless utility app per spec</p>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">9. Competitor References</h2>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">#</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Website</td><td class="border border-slate-700 px-4 py-2 text-slate-300">What They Do Well</td><td class="border border-slate-700 px-4 py-2 text-slate-300">What to Avoid</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">1</td><td class="border border-slate-700 px-4 py-2 text-slate-300">typescale.com</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Clean, simple single-purpose tool, musical ratio presets</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Dated UI, no export, no font pairing, no responsive</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">2</td><td class="border border-slate-700 px-4 py-2 text-slate-300">typoscale.vercel.app</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Modern stack, font pairing, 4 export formats, WCAG badges, shareable URLs</td><td class="border border-slate-700 px-4 py-2 text-slate-300">No component preview, no split responsive viewport</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">3</td><td class="border border-slate-700 px-4 py-2 text-slate-300">fontpair.co</td><td class="border border-slate-700 px-4 py-2 text-slate-300">500+ curated pairings, brand kit export, design prompts for AI coding</td><td class="border border-slate-700 px-4 py-2 text-slate-300">No type scale, no code export beyond CSS</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">4</td><td class="border border-slate-700 px-4 py-2 text-slate-300">coolors.co</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Lock-and-roll UX, keyboard workflow, URL state sharing, addictive exploration</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Not a typography tool — study the UX pattern, not the domain</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">5</td><td class="border border-slate-700 px-4 py-2 text-slate-300">ui.shadcn.com</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Clean docs, accessible components, code previews, dark mode</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Documentation, not a tool — study the code block UX and layout</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">6</td><td class="border border-slate-700 px-4 py-2 text-slate-300">precise-type.com</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Detailed scale models, line grid alignment, multi-unit display</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Overwhelming for quick use, too many options visible at once</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">7</td><td class="border border-slate-700 px-4 py-2 text-slate-300">fontscaler.com</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Multi-device frames, A/B comparison, command palette, accessibility testing</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Premium paywall, heavy UI, too many features for quick scale exploration</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">8</td><td class="border border-slate-700 px-4 py-2 text-slate-300">pickfont.com</td><td class="border border-slate-700 px-4 py-2 text-slate-300">npm package, useFonts() hook, real UI context, clean export</td><td class="border border-slate-700 px-4 py-2 text-slate-300">No scale calculator, Vue 3 focused, no Tailwind export</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">9</td><td class="border border-slate-700 px-4 py-2 text-slate-300">typscool.com</td><td class="border border-slate-700 px-4 py-2 text-slate-300">1400+ fonts, responsive presets, keyboard shortcuts, CSS file download</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Premium focus, no open-source community, limited format export</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">10</td><td class="border border-slate-700 px-4 py-2 text-slate-300">modularscale.com (modularscale.com)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">The original, educational, foundational concept</td><td class="border border-slate-700 px-4 py-2 text-slate-300">No longer actively maintained, no modern features</td></tr>
+</table></div>
+    </main>
+    <footer class="border-t border-slate-800 mt-12 py-8">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-500 text-sm">
+            typepairing — Market Analysis
+        </div>
+    </footer>
+</body>
+</html>

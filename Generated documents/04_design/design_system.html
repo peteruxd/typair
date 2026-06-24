@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System — typepairing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+                    colors: { primary: '#0f172a', secondary: '#1e293b', accent: '#112AD0' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .prose { max-width: 80ch; }
+        .prose pre { background: #1e293b; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; }
+        .prose code { background: #1e293b; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.875rem; }
+        .prose table { width: 100%; border-collapse: collapse; }
+        .prose th { background: #1e293b; padding: 0.75rem; text-align: left; font-weight: 600; }
+        .prose td { padding: 0.75rem; border-bottom: 1px solid #334155; }
+        .prose tr:hover { background: #1e293b/50; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen">
+    <header class="bg-slate-800/50 backdrop-blur-sm border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-xl font-bold" style="color:#112AD0">typepairing</a>
+                <nav class="flex gap-6 text-sm">
+                    <a href="../01_research/market_analysis.html" class="text-slate-400 hover:text-white transition">Research</a>
+                    <a href="../02_prd/product_requirements.html" class="text-slate-400 hover:text-white transition">PRD</a>
+                    <a href="design_system.html" class="text-blue-500 font-medium">Design</a>
+                    <a href="../08_content/copy.html" class="text-slate-400 hover:text-white transition">Content</a>
+                    <a href="../03_architecture/system_design.html" class="text-slate-400 hover:text-white transition">Architecture</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="max-w-5xl mx-auto px-6 py-12">
+        <h1 class="text-4xl font-bold mb-8">Design System: TyPair</h1>
+<h2 class="text-2xl font-semibold mb-4 mt-8">1. Three Design Direction Options</h2>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Aspect</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Option A: Developer's Workbench</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Option B: Designer's Studio</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Option C: Hybrid Canvas</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**Visual Style**</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Brutalist-clean — raw borders, visible grid lines, monospaced labels, schematic. Inspired by shadcn/ui docs and terminal UIs.</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Minimalist polished — subtle shadows, rounded corners, generous whitespace, smooth transitions via framer-motion. Inspired by Coolors and Figma.</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Split-screen duality — left panel uses schematic/dev aesthetic, right preview panel uses polished designer aesthetic. Controls recede, content shines.</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**Primary Color**</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Zinc-900 (#18181b) background, Zinc-50 (#fafafa) foreground</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Slate-950 (#020617) dark, Slate-50 (#f8fafc) light</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Slate-900 (#0f172a) dark, Slate-50 (#f8fafc) light</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**Accent Color**</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Emerald-500 (#10b981) — technical, trustworthy</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Blue-500 (#3b82f6) — creative, vibrant</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Emerald-500 (#10b981) — balanced, professional</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**Interface Font**</td><td class="border border-slate-700 px-4 py-2 text-slate-300">JetBrains Mono / Geist Mono — coding tool feel</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Inter — neutral workhorse</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Geist — modern, neutral, works for both camps</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**Complexity**</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Medium — feature-rich via tabs and collapsible sections</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Low-Medium — focused, streamlined, progressive disclosure</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Medium-High — all features with smart defaults</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**Best For**</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Frontend engineers, design system maintainers</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Product designers, UI/UX professionals, freelancers</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Both audiences — adaptable by default</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**Pros**</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Trustworthy UI, fast, appeals to developers, pairs with code export</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Beautiful, inviting, lower learning curve, strong differentiation</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Broadest appeal, single codebase, can A/B test onboarding</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">**Cons**</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Too austere for pure designers, less inspiring for marketing</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Less efficient for power users, animation overhead</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Harder to maintain dual aesthetic, risk of feeling designed by committee</td></tr>
+</table></div>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">2. Selected Option</h2>
+<p class="text-slate-300 mb-4"><strong>Chosen Direction</strong>: Option C — Hybrid Canvas</p>
+<p class="text-slate-300 mb-4"><strong>Rationale</strong>:</p>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">TyPair's target audience spans both designers (Taylor) and developers (Alex). A pure dev aesthetic alienates Taylor; a pure design aesthetic alienates Alex. The split-screen workspace maps naturally to a dual-aesthetic approach — left panel is the engineer's control surface (schematic, precise, dense), right panel is the designer's canvas (polished, spacious, beautiful).</li>
+<li class="text-slate-300">The researcher recommended Option C and the user confirmed agreement.</li>
+<li class="text-slate-300">The left panel's schematic aesthetic signals "tool" and "precision" — appropriate for scale math and code export. The right panel's polished aesthetic signals "preview" and "result" — appropriate for evaluating typography on real UI.</li>
+<li class="text-slate-300">Single codebase with CSS variable-driven theming means both aesthetics share the same component primitives, just with different visual tokens.</li>
+</ul>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">3. Color Palette</h2>
+<h3 class="text-xl font-semibold mb-3 mt-6">Light Mode</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><th class="border border-slate-700 px-4 py-2 text-slate-300">Name</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Hex</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Usage</th></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Background</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#f8fafc (Slate-50)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Page background</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Foreground</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#0f172a (Slate-900)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Primary text</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Card</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#ffffff</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Card/surface backgrounds</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Card Foreground</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#0f172a</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Text on cards</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Muted</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#f1f5f9 (Slate-100)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Muted backgrounds</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Muted Foreground</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#64748b (Slate-500)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Muted text</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Border</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#e2e8f0 (Slate-200)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Borders and dividers</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Input</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#e2e8f0 (Slate-200)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Input borders</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Primary</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#0f172a (Slate-900)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Primary buttons, active states</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Primary Foreground</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#f8fafc (Slate-50)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Text on primary</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Accent</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#10b981 (Emerald-500)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Focus rings, active sliders, selected font chips, export buttons, links</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Accent Foreground</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#f8fafc</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Text on accent</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Destructive</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#ef4444 (Red-500)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Reset, destructive actions</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Ring</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#10b981 (Emerald-500)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Focus ring outlines</td></tr>
+</table></div>
+<h3 class="text-xl font-semibold mb-3 mt-6">Dark Mode</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><th class="border border-slate-700 px-4 py-2 text-slate-300">Name</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Hex</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Usage</th></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Background</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#0f172a (Slate-900)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Page background</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Foreground</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#f8fafc (Slate-50)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Primary text</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Card</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#1e293b (Slate-800)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Card/surface backgrounds</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Card Foreground</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#f8fafc</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Text on cards</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Muted</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#1e293b (Slate-800)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Muted backgrounds</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Muted Foreground</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#94a3b8 (Slate-400)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Muted text</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Border</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#334155 (Slate-700)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Borders and dividers</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Input</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#334155 (Slate-700)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Input borders</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Primary</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#f8fafc (Slate-50)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Primary buttons</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Primary Foreground</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#0f172a (Slate-900)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Text on primary</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Accent</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#34d399 (Emerald-400)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Focus rings, active sliders, selected font chips</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Accent Foreground</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#0f172a</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Text on accent</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Destructive</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#f87171 (Red-400)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Reset, destructive actions</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Ring</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#34d399 (Emerald-400)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Focus ring outlines</td></tr>
+</table></div>
+<h3 class="text-xl font-semibold mb-3 mt-6">Left Panel (Schematic/Dark)</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><th class="border border-slate-700 px-4 py-2 text-slate-300">Name</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Hex</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Usage</th></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Panel Background</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#0f172a (Slate-900)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Left panel surface</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Panel Border</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#1e293b (Slate-800)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Panel edge</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Control Background</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#1e293b</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Input/select backgrounds</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Control Border</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#334155</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Input borders</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Label Text</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#94a3b8 (Slate-400)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Field labels</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Value Text</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#f8fafc (Slate-50)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Values, active controls</td></tr>
+</table></div>
+<h3 class="text-xl font-semibold mb-3 mt-6">Right Panel (Preview/Light)</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><th class="border border-slate-700 px-4 py-2 text-slate-300">Name</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Hex</th><th class="border border-slate-700 px-4 py-2 text-slate-300">Usage</th></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Canvas Background</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#ffffff</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Preview surface</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Canvas Text</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#0f172a</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Preview text content</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Component Border</td><td class="border border-slate-700 px-4 py-2 text-slate-300">#e2e8f0</td><td class="border border-slate-700 px-4 py-2 text-slate-300">shadcn component borders</td></tr>
+</table></div>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">4. Typography</h2>
+<h3 class="text-xl font-semibold mb-3 mt-6">Interface (TyPair UI Shell)</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Element</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Font</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Weight</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Size</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Line Height</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Header / Nav</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Geist (or Inter)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">600</td><td class="border border-slate-700 px-4 py-2 text-slate-300">14px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">20px</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Section Title</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Geist</td><td class="border border-slate-700 px-4 py-2 text-slate-300">500</td><td class="border border-slate-700 px-4 py-2 text-slate-300">13px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">18px</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Control Label</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Geist</td><td class="border border-slate-700 px-4 py-2 text-slate-300">500</td><td class="border border-slate-700 px-4 py-2 text-slate-300">12px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">16px</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Value / Input Text</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Geist</td><td class="border border-slate-700 px-4 py-2 text-slate-300">400</td><td class="border border-slate-700 px-4 py-2 text-slate-300">13px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">18px</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Code / Token Display</td><td class="border border-slate-700 px-4 py-2 text-slate-300">JetBrains Mono</td><td class="border border-slate-700 px-4 py-2 text-slate-300">400</td><td class="border border-slate-700 px-4 py-2 text-slate-300">12px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">18px</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Tooltip</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Geist</td><td class="border border-slate-700 px-4 py-2 text-slate-300">400</td><td class="border border-slate-700 px-4 py-2 text-slate-300">11px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">16px</td></tr>
+</table></div>
+<h3 class="text-xl font-semibold mb-3 mt-6">Preview (User-Selected Type Scale)</h3>
+<p class="text-slate-300 mb-4">The right panel renders using the user's configured header and body fonts at computed scale steps. The interface shell must remain visually neutral (Geist/Inter) to eliminate competition with the previewed fonts.</p>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">5. Component Specifications</h2>
+<h3 class="text-xl font-semibold mb-3 mt-6">Button (Primary)</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">State</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Background</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Text</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Border</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Shadow</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Default</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`bg-primary`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`text-primary-foreground`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">none</td><td class="border border-slate-700 px-4 py-2 text-slate-300">none</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Hover</td><td class="border border-slate-700 px-4 py-2 text-slate-300">opacity 0.9</td><td class="border border-slate-700 px-4 py-2 text-slate-300">same</td><td class="border border-slate-700 px-4 py-2 text-slate-300">none</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`shadow-sm`</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Active</td><td class="border border-slate-700 px-4 py-2 text-slate-300">opacity 0.8</td><td class="border border-slate-700 px-4 py-2 text-slate-300">same</td><td class="border border-slate-700 px-4 py-2 text-slate-300">none</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`shadow-inner`</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Disabled</td><td class="border border-slate-700 px-4 py-2 text-slate-300">opacity 0.5</td><td class="border border-slate-700 px-4 py-2 text-slate-300">opacity 0.5</td><td class="border border-slate-700 px-4 py-2 text-slate-300">none</td><td class="border border-slate-700 px-4 py-2 text-slate-300">none</td></tr>
+</table></div>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Padding: 8px 16px</li>
+<li class="text-slate-300">Border radius: 6px</li>
+<li class="text-slate-300">Font: Geist 500, 13px</li>
+<li class="text-slate-300">Transition: 150ms ease-out on background/opacity</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Button (Outline)</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">State</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Background</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Text</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Border</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Default</td><td class="border border-slate-700 px-4 py-2 text-slate-300">transparent</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`text-foreground`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`border-input` 1px</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Hover</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`bg-muted`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">same</td><td class="border border-slate-700 px-4 py-2 text-slate-300">same</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Active</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`bg-muted` opacity 0.8</td><td class="border border-slate-700 px-4 py-2 text-slate-300">same</td><td class="border border-slate-700 px-4 py-2 text-slate-300">same</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Disabled</td><td class="border border-slate-700 px-4 py-2 text-slate-300">transparent</td><td class="border border-slate-700 px-4 py-2 text-slate-300">opacity 0.5</td><td class="border border-slate-700 px-4 py-2 text-slate-300">opacity 0.3</td></tr>
+</table></div>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Same sizing as primary button</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Text Input / Select</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">State</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Background</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Border</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Text</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Default</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`bg-control` (left) / `bg-input`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`border-control`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`text-value`</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Focused</td><td class="border border-slate-700 px-4 py-2 text-slate-300">same</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`ring-2 ring-accent`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">same</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Error</td><td class="border border-slate-700 px-4 py-2 text-slate-300">same</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`ring-2 ring-destructive`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">same</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Disabled</td><td class="border border-slate-700 px-4 py-2 text-slate-300">opacity 0.5</td><td class="border border-slate-700 px-4 py-2 text-slate-300">opacity 0.3</td><td class="border border-slate-700 px-4 py-2 text-slate-300">opacity 0.5</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Placeholder</td><td class="border border-slate-700 px-4 py-2 text-slate-300">—</td><td class="border border-slate-700 px-4 py-2 text-slate-300">—</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`text-muted-foreground`</td></tr>
+</table></div>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Padding: 8px 12px</li>
+<li class="text-slate-300">Border radius: 6px</li>
+<li class="text-slate-300">Font: Geist 400, 13px</li>
+<li class="text-slate-300">Transition: 150ms ease-out on border/ring</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Slider (shadcn Slider)</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Element</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Track</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Range</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Thumb</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Default</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`bg-control` (h-2, rounded-full)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`bg-accent`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">16px circle, `bg-accent`, `ring-2 ring-accent`</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Hover</td><td class="border border-slate-700 px-4 py-2 text-slate-300">—</td><td class="border border-slate-700 px-4 py-2 text-slate-300">—</td><td class="border border-slate-700 px-4 py-2 text-slate-300">same + shadow</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Focus</td><td class="border border-slate-700 px-4 py-2 text-slate-300">—</td><td class="border border-slate-700 px-4 py-2 text-slate-300">—</td><td class="border border-slate-700 px-4 py-2 text-slate-300">same + `ring-4 ring-accent/30`</td></tr>
+</table></div>
+<h3 class="text-xl font-semibold mb-3 mt-6">Tabs (shadcn Tabs)</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Element</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Active</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Inactive</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Hover</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Tab Trigger</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`text-foreground` + bottom border `border-accent` 2px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`text-muted-foreground`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`text-foreground`</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Tab Content</td><td class="border border-slate-700 px-4 py-2 text-slate-300">full opacity</td><td class="border border-slate-700 px-4 py-2 text-slate-300">—</td><td class="border border-slate-700 px-4 py-2 text-slate-300">—</td></tr>
+</table></div>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Font: Geist 500, 12px</li>
+<li class="text-slate-300">Padding: 8px 16px</li>
+<li class="text-slate-300">Transition: 150ms ease-out on color</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Card (shadcn Card)</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">State</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Background</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Border</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Shadow</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Default</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`bg-card`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`border-border`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">none</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Hover</td><td class="border border-slate-700 px-4 py-2 text-slate-300">same</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`border-accent/50`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`shadow-md`</td></tr>
+</table></div>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Border radius: 8px</li>
+<li class="text-slate-300">Padding: 24px</li>
+<li class="text-slate-300">Transition: 200ms ease-out on border/shadow</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Popover + Command (Font Search)</h3>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Uses shadcn Popover + Command pattern</li>
+<li class="text-slate-300">Popover: white/card background, 8px radius, shadow-lg, z-50</li>
+<li class="text-slate-300">Command input: search icon + text input at top</li>
+<li class="text-slate-300">Command items: 32px height, hover state <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">bg-muted</code>, active state <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">bg-accent/10 text-accent</code></li>
+<li class="text-slate-300">Selected item: <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">bg-accent/10</code> + checkmark icon</li>
+<li class="text-slate-300">Empty state: centered "No fonts found" text</li>
+<li class="text-slate-300">Font preview: each item shows font name in its own typeface</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Lock Toggle</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">State</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Icon</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Color</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Unlocked</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`unlock` (Lucide)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`text-muted-foreground`</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Locked</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`lock` (Lucide)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`text-accent` fill</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Hover</td><td class="border border-slate-700 px-4 py-2 text-slate-300">—</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`text-foreground`</td></tr>
+</table></div>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Icon size: 16px</li>
+<li class="text-slate-300">Click area: 32x32px minimum</li>
+<li class="text-slate-300">Transition: 150ms ease-out on color, icon swap</li>
+</ul>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">6. Spacing System</h2>
+<p class="text-slate-300 mb-4">Base unit: 4px</p>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Token</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Value</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Usage</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`--space-1`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">4px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Tight gaps, icon padding</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`--space-2`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">8px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Button padding, small gaps</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`--space-3`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">12px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Input padding, control groups</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`--space-4`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">16px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Card padding, section gap</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`--space-5`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">20px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Panel padding</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`--space-6`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">24px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Large cards, modal padding</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`--space-8`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">32px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Section margins</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`--space-10`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">40px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Page section gaps</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`--space-12`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">48px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Hero section padding</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`--space-16`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">64px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Page margins</td></tr>
+</table></div>
+<h3 class="text-xl font-semibold mb-3 mt-6">Layout</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Element</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Padding</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Gap</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Left control panel</td><td class="border border-slate-700 px-4 py-2 text-slate-300">20px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">16px between sections</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Right preview canvas</td><td class="border border-slate-700 px-4 py-2 text-slate-300">0 (full bleed)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">—</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Section within panel</td><td class="border border-slate-700 px-4 py-2 text-slate-300">0</td><td class="border border-slate-700 px-4 py-2 text-slate-300">12px between header + content</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Control row</td><td class="border border-slate-700 px-4 py-2 text-slate-300">0</td><td class="border border-slate-700 px-4 py-2 text-slate-300">8px between label + input</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Nav bar</td><td class="border border-slate-700 px-4 py-2 text-slate-300">12px 20px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">24px between nav items</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Card grid</td><td class="border border-slate-700 px-4 py-2 text-slate-300">—</td><td class="border border-slate-700 px-4 py-2 text-slate-300">20px gap</td></tr>
+</table></div>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">7. Responsive Breakpoints</h2>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Breakpoint</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Width</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Layout Adjustments</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Mobile</td><td class="border border-slate-700 px-4 py-2 text-slate-300">< 768px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Stack panels vertically: controls on top, preview below. Condensed controls (collapsible sections).</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Tablet</td><td class="border border-slate-700 px-4 py-2 text-slate-300">768px – 1024px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Side-by-side panels with narrower left panel (240px). Compact controls.</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Desktop</td><td class="border border-slate-700 px-4 py-2 text-slate-300">1024px – 1440px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Full split-screen: left panel 300px, right canvas fills rest. All controls visible.</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Large Desktop</td><td class="border border-slate-700 px-4 py-2 text-slate-300">> 1440px</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Same as desktop with wider canvas. Extra whitespace.</td></tr>
+</table></div>
+<h3 class="text-xl font-semibold mb-3 mt-6">Preview Canvas Simulated Breakpoints</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Simulated Device</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Width</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Mobile</td><td class="border border-slate-700 px-4 py-2 text-slate-300">375px</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Tablet</td><td class="border border-slate-700 px-4 py-2 text-slate-300">768px</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Desktop</td><td class="border border-slate-700 px-4 py-2 text-slate-300">1200px</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Fluid</td><td class="border border-slate-700 px-4 py-2 text-slate-300">100% of available canvas width</td></tr>
+</table></div>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">8. Animation Specifications</h2>
+<h3 class="text-xl font-semibold mb-3 mt-6">Layout Transitions</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Trigger</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Property</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Duration</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Easing</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Notes</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Font change</td><td class="border border-slate-700 px-4 py-2 text-slate-300">`font-family` on preview text</td><td class="border border-slate-700 px-4 py-2 text-slate-300">200ms</td><td class="border border-slate-700 px-4 py-2 text-slate-300">ease-out</td><td class="border border-slate-700 px-4 py-2 text-slate-300">No animation on font-family itself — layout shift via framer-motion AnimatePresence</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Scale change</td><td class="border border-slate-700 px-4 py-2 text-slate-300">text size, spacing</td><td class="border border-slate-700 px-4 py-2 text-slate-300">200ms</td><td class="border border-slate-700 px-4 py-2 text-slate-300">ease-out</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Smooth all layout properties</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Viewport switch</td><td class="border border-slate-700 px-4 py-2 text-slate-300">preview container width</td><td class="border border-slate-700 px-4 py-2 text-slate-300">300ms</td><td class="border border-slate-700 px-4 py-2 text-slate-300">ease-in-out</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Resize animation with spring physics</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Panel toggle</td><td class="border border-slate-700 px-4 py-2 text-slate-300">panel width</td><td class="border border-slate-700 px-4 py-2 text-slate-300">250ms</td><td class="border border-slate-700 px-4 py-2 text-slate-300">ease-out</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Collapsible sections in left panel</td></tr>
+</table></div>
+<h3 class="text-xl font-semibold mb-3 mt-6">Micro-interactions</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Element</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Trigger</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Animation</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Duration</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Lock icon</td><td class="border border-slate-700 px-4 py-2 text-slate-300">click</td><td class="border border-slate-700 px-4 py-2 text-slate-300">icon swap (Lucide unlock→lock)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">100ms</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Button</td><td class="border border-slate-700 px-4 py-2 text-slate-300">hover</td><td class="border border-slate-700 px-4 py-2 text-slate-300">background darken</td><td class="border border-slate-700 px-4 py-2 text-slate-300">150ms</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Button</td><td class="border border-slate-700 px-4 py-2 text-slate-300">click</td><td class="border border-slate-700 px-4 py-2 text-slate-300">scale(0.97) then scale(1)</td><td class="border border-slate-700 px-4 py-2 text-slate-300">100ms</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Card</td><td class="border border-slate-700 px-4 py-2 text-slate-300">hover</td><td class="border border-slate-700 px-4 py-2 text-slate-300">border color + shadow</td><td class="border border-slate-700 px-4 py-2 text-slate-300">200ms</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Select dropdown</td><td class="border border-slate-700 px-4 py-2 text-slate-300">open</td><td class="border border-slate-700 px-4 py-2 text-slate-300">fade + scaleY from top</td><td class="border border-slate-700 px-4 py-2 text-slate-300">150ms</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Copy toast</td><td class="border border-slate-700 px-4 py-2 text-slate-300">appear</td><td class="border border-slate-700 px-4 py-2 text-slate-300">slide up + fade</td><td class="border border-slate-700 px-4 py-2 text-slate-300">250ms</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Toast dismiss</td><td class="border border-slate-700 px-4 py-2 text-slate-300">auto</td><td class="border border-slate-700 px-4 py-2 text-slate-300">slide down + fade</td><td class="border border-slate-700 px-4 py-2 text-slate-300">200ms</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Dark/Light mode</td><td class="border border-slate-700 px-4 py-2 text-slate-300">toggle</td><td class="border border-slate-700 px-4 py-2 text-slate-300">CSS transition on background/color</td><td class="border border-slate-700 px-4 py-2 text-slate-300">300ms</td></tr>
+</table></div>
+<h3 class="text-xl font-semibold mb-3 mt-6">Page/Workspace Transitions</h3>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Transition</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Animation</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Initial load</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Fade in workspace panels (100ms stagger: left panel first, right panel 50ms later)</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Export panel tab switch</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Immediate content swap (no animation — data integrity)</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Lock & Roll font switch</td><td class="border border-slate-700 px-4 py-2 text-slate-300">AnimatePresence on font name text: old font fades out 100ms, new fades in 100ms</td></tr>
+</table></div>
+<h3 class="text-xl font-semibold mb-3 mt-6">Timing Function Reference</h3>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Ease-out: <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">cubic-bezier(0.16, 1, 0.3, 1)</code> — for most UI transitions</li>
+<li class="text-slate-300">Ease-in-out: <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">cubic-bezier(0.65, 0, 0.35, 1)</code> — for viewport resize</li>
+<li class="text-slate-300">Spring: <code class="bg-slate-800 px-1.5 py-0.5 rounded text-sm">{ type: "spring", stiffness: 300, damping: 30 }</code> — framer-motion spring for viewport switch</li>
+</ul>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">9. Visual Style Rules</h2>
+<h3 class="text-xl font-semibold mb-3 mt-6">Left Panel (Control Surface)</h3>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Background: Slate-900 (dark) — matches terminal/IDE aesthetic</li>
+<li class="text-slate-300">All controls use monospaced or semi-monospaced font labels</li>
+<li class="text-slate-300">Section dividers: 1px border-top Slate-800 with uppercase section label in Slate-500</li>
+<li class="text-slate-300">Number inputs show computed values with monospaced digits</li>
+<li class="text-slate-300">Selected/chosen values highlighted in accent color (Emerald)</li>
+<li class="text-slate-300">Scrollbar: thin, dark theme</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Right Panel (Preview Canvas)</h3>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Background: White (light mode) — clean, paper-like canvas</li>
+<li class="text-slate-300">Uses shadcn component class names for consistency with output code</li>
+<li class="text-slate-300">Viewport width indicator in top-right corner</li>
+<li class="text-slate-300">Toggle buttons (Full Layout / Waterfall) as small pill buttons in top toolbar</li>
+<li class="text-slate-300">Content reflects the user's custom preview text or default lorem ipsum</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Typography Scale Display (Hierarchy Waterfall)</h3>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Each step rendered as a horizontal row with:</li>
+<li class="text-slate-300">Label column (xs, sm, base, lg, xl, 2xl, etc.) — monospaced, 11px</li>
+<li class="text-slate-300">Value column (px / rem) — monospaced, 11px</li>
+<li class="text-slate-300">Sample text column — rendered in the active font at computed size</li>
+<li class="text-slate-300">Alternating row backgrounds for readability</li>
+<li class="text-slate-300">WCAG contrast badge (AA / AAA / Fail) as small colored pill in rightmost column</li>
+</ul>
+<h3 class="text-xl font-semibold mb-3 mt-6">Code Export Display</h3>
+<ul class="list-disc list-inside space-y-2 mb-4">
+<li class="text-slate-300">Code block background: Slate-900 (matches VS Code dark theme)</li>
+<li class="text-slate-300">Syntax highlighting: minimal, monochrome with accent for values</li>
+<li class="text-slate-300">Tab bar: format names (CSS, Tailwind v3, Tailwind v4, JSON) as small tabs</li>
+<li class="text-slate-300">Copy button: top-right corner of code block, outline style</li>
+</ul>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">10. Icons</h2>
+<p class="text-slate-300 mb-4">All icons from <strong>Lucide React</strong> library:</p>
+<div class="overflow-x-auto mb-4"><table class="w-full border-collapse">
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">Icon</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Usage</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`Lock`, `Unlock`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Font lock toggle</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`Shuffle`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Roll button</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`Copy`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Copy to clipboard</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`Check`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Copied confirmation</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`Sun`, `Moon`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Dark/light mode toggle</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`Monitor`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Desktop viewport</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`Smartphone`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Mobile viewport</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`LayoutGrid`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Full layout view</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`List`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Hierarchy waterfall view</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`Search`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Font search input</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`Maximize2`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Expand preview</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`Link`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Share URL</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`Settings2`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Scale configuration</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`Type`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Font selection</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`Code2`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Code export</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`Download`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Download all</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`X`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Close/clear</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`ChevronDown`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Select dropdown</td></tr>
+<tr><td class="border border-slate-700 px-4 py-2 text-slate-300">`GripHorizontal`</td><td class="border border-slate-700 px-4 py-2 text-slate-300">Drag handle (if collapsible sections)</td></tr>
+</table></div>
+<p class="text-slate-300 mb-4">---</p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">Visual Mockups</h2>
+<h3 class="text-xl font-semibold mb-3 mt-6">Workspace Layout</h3>
+<img src="mockups/workspace.png" alt="" class="rounded-lg my-4 max-w-full">
+<h3 class="text-xl font-semibold mb-3 mt-6">shadcn UI Preview — Desktop</h3>
+<img src="mockups/preview-desktop.png" alt="" class="rounded-lg my-4 max-w-full">
+<h3 class="text-xl font-semibold mb-3 mt-6">shadcn UI Preview — Mobile</h3>
+<img src="mockups/preview-mobile.png" alt="" class="rounded-lg my-4 max-w-full">
+<h3 class="text-xl font-semibold mb-3 mt-6">Component States</h3>
+<img src="mockups/components.png" alt="" class="rounded-lg my-4 max-w-full">
+<h3 class="text-xl font-semibold mb-3 mt-6">Color Palette</h3>
+<img src="mockups/palette.png" alt="" class="rounded-lg my-4 max-w-full">
+    </main>
+    <footer class="border-t border-slate-800 mt-12 py-8">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-500 text-sm">
+            typepairing — Design System
+        </div>
+    </footer>
+</body>
+</html>
