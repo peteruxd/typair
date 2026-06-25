@@ -15,7 +15,7 @@ export interface ViewportState {
 }
 
 export interface PreviewState {
-  mode: "layout" | "waterfall";
+  mode: "layout" | "waterfall" | "code";
   customText: string;
 }
 
@@ -45,7 +45,7 @@ export type Action =
   | { type: "SET_MOBILE_RATIO"; value: number }
   | { type: "SET_VIEWPORT_MODE"; value: "desktop" | "mobile" | "fluid" }
   | { type: "TOGGLE_SYNC" }
-  | { type: "SET_PREVIEW_MODE"; value: "layout" | "waterfall" }
+  | { type: "SET_PREVIEW_MODE"; value: "layout" | "waterfall" | "code" }
   | { type: "SET_THEME"; value: "light" | "dark" }
   | { type: "SET_FONTS"; value: { header: string | null; body: string | null } }
   | { type: "RESET" };

@@ -3,8 +3,7 @@
 import { useState, useRef, useCallback } from "react";
 import { useScale } from "@/hooks/use-scale";
 import { useWorkspace } from "@/lib/state";
-import { ExportPanel } from "@/components/export/export-panel";
-import { ExternalLink, Calculator, Search, Shuffle, Layout, Monitor, Code } from "lucide-react";
+import { ExternalLink, Calculator, Search, Shuffle, Layout, Monitor, Code, Menu } from "lucide-react";
 
 function HoverEdit({
   initial, className = "", style = {}, as: Tag = "span", fontFamily, userFont = false, serif = false,
@@ -74,6 +73,7 @@ export function UiPreview() {
   const baseSize = base ? `${base.rem}rem` : "1rem";
   const baseLh = base?.lineHeight ?? 1.5;
   const h3Size = h3 ? `${h3.rem}rem` : "1.75rem";
+  const isMobile = state.viewport.mode === "mobile";
 
   return (
     <div className="min-h-full">
@@ -90,23 +90,24 @@ export function UiPreview() {
             className="text-lg font-semibold"
             style={{ fontWeight: bodyWeight }}
           />
-          <div className="hidden items-center gap-6 text-sm text-[#64748b] md:flex" style={{ fontFamily: body ? `${body}, sans-serif` : undefined }}>
+          <div className={isMobile ? "hidden" : "flex items-center gap-6 text-sm text-[#64748b]"} style={{ fontFamily: body ? `${body}, sans-serif` : undefined }}>
             <span>Scale Calculator</span>
             <span>Font Pairing</span>
             <span>Code Export</span>
             <span>Blog</span>
           </div>
+          {isMobile && <Menu className="h-5 w-5 text-[#0f172a] dark:text-[#f8fafc]" />}
         </div>
-        <div className="flex items-center gap-4">
+        <div className={`flex items-center ${isMobile ? "gap-2" : "gap-4"}`}>
           <ExternalLink className="h-5 w-5 text-[#0f172a] dark:text-[#f8fafc]" />
-          <button className="rounded-md bg-[#0f172a] px-4 py-2 text-sm font-medium text-white dark:bg-[#f8fafc] dark:text-[#0f172a]" style={{ fontFamily: body ? `${body}, sans-serif` : undefined }}>
+          <button className={`rounded-md bg-[#0f172a] font-medium text-white dark:bg-[#f8fafc] dark:text-[#0f172a] ${isMobile ? "px-3 py-1.5 text-xs" : "px-4 py-2 text-sm"}`} style={{ fontFamily: body ? `${body}, sans-serif` : undefined }}>
             Start Scaling &mdash; It&rsquo;s Free
           </button>
         </div>
       </div>
 
       {/* ─── Hero ─── */}
-      <div className="px-16 py-20 text-center">
+      <div className={isMobile ? "px-4 py-10 text-center" : "px-16 py-20 text-center"}>
         <div className="mx-auto" style={{ maxWidth: 800 }}>
           <HoverEdit
             initial="Design your type system. Ship in seconds."
@@ -135,16 +136,16 @@ export function UiPreview() {
             }}
           />
         </div>
-        <div className="mt-6 flex items-center justify-center gap-4">
-          <button className="rounded-lg bg-[#0f172a] px-6 py-4 text-base font-semibold text-white dark:bg-[#f8fafc] dark:text-[#0f172a]" style={{ fontFamily: body ? `${body}, sans-serif` : undefined }}>
+        <div className={`mt-6 flex items-center justify-center ${isMobile ? "gap-3" : "gap-4"}`}>
+          <button className={`rounded-lg bg-[#0f172a] font-semibold text-white dark:bg-[#f8fafc] dark:text-[#0f172a] ${isMobile ? "px-5 py-3 text-sm" : "px-6 py-4 text-base"}`} style={{ fontFamily: body ? `${body}, sans-serif` : undefined }}>
             Start Scaling &mdash; It&rsquo;s Free
           </button>
-          <span className="text-base font-medium text-[#64748b]" style={{ fontFamily: body ? `${body}, sans-serif` : undefined }}>See How It Works</span>
+          <span className={`font-medium text-[#64748b] ${isMobile ? "text-sm" : "text-base"}`} style={{ fontFamily: body ? `${body}, sans-serif` : undefined }}>See How It Works</span>
         </div>
       </div>
 
       {/* ─── Features ─── */}
-      <div className="px-16 pb-16 pt-12">
+      <div className={isMobile ? "px-4 pb-12 pt-8" : "px-16 pb-16 pt-12"}>
         <div className="mx-auto" style={{ maxWidth: 900 }}>
           <HoverEdit
             initial="Everything you need to ship great typography"
@@ -157,7 +158,7 @@ export function UiPreview() {
           />
 
           {/* Row 1 */}
-          <div className="mb-6 grid grid-cols-2 gap-6">
+          <div className={`mb-6 grid gap-6 ${isMobile ? "grid-cols-1" : "grid-cols-2"}`}>
             <FeatureCard icon={<Calculator className="h-6 w-6 text-[#10b981]" />} header={header} body={body} headerWeight={headerWeight} baseLh={baseLh}
               title="Modular Scale Calculator"
               desc="Choose from classic musical intervals or enter a custom ratio. TyPair computes every scale step in real time."
@@ -169,7 +170,7 @@ export function UiPreview() {
           </div>
 
           {/* Row 2 */}
-          <div className="mb-6 grid grid-cols-2 gap-6">
+          <div className={`mb-6 grid gap-6 ${isMobile ? "grid-cols-1" : "grid-cols-2"}`}>
             <FeatureCard icon={<Shuffle className="h-6 w-6 text-[#10b981]" />} header={header} body={body} headerWeight={headerWeight} baseLh={baseLh}
               title="Lock &amp; Roll"
               desc="Lock your header font, roll through complementary body fonts. Spacebar shortcut for rapid exploration."
@@ -181,7 +182,7 @@ export function UiPreview() {
           </div>
 
           {/* Row 3 */}
-          <div className="grid grid-cols-2 gap-6">
+          <div className={`grid gap-6 ${isMobile ? "grid-cols-1" : "grid-cols-2"}`}>
             <FeatureCard icon={<Monitor className="h-6 w-6 text-[#10b981]" />} header={header} body={body} headerWeight={headerWeight} baseLh={baseLh}
               title="Responsive Dual Viewport"
               desc="Configure independent base sizes for desktop and mobile. Both viewports update in real time."
@@ -195,7 +196,7 @@ export function UiPreview() {
       </div>
 
       {/* ─── Blog ─── */}
-      <div className="bg-[#f1f5f9] px-16 py-16 dark:bg-[#1e293b]">
+      <div className={`bg-[#f1f5f9] dark:bg-[#1e293b] ${isMobile ? "px-4 py-10" : "px-16 py-16"}`}>
           <HoverEdit
             initial="Articles and resources for better typography"
             fontFamily={header}
@@ -205,7 +206,7 @@ export function UiPreview() {
           className="mb-8 text-center font-bold"
           style={{ fontSize: "1.75rem", fontWeight: headerWeight }}
         />
-        <div className="mx-auto grid grid-cols-3 gap-6" style={{ maxWidth: 1012 }}>
+        <div className={`mx-auto grid gap-6 ${isMobile ? "grid-cols-1" : "grid-cols-3"}`} style={{ maxWidth: 1012 }}>
           {[
             { tag: "Guides", title: "The Math Behind Modular Typography Scales", excerpt: "Understand how musical intervals map to visual hierarchy and how to use them in your next project." },
             { tag: "Engineering", title: "Fluid Typography with clamp() in Tailwind CSS v4", excerpt: "Practical guide to setting up responsive typography using CSS clamp() with live examples." },
@@ -237,15 +238,16 @@ export function UiPreview() {
       </div>
 
       {/* ─── Footer ─── */}
-      <div className="bg-[#0f172a] px-16 py-12 text-center dark:bg-[#f8fafc]">
+      <div className={`bg-[#0f172a] text-center dark:bg-[#f8fafc] ${isMobile ? "px-4 py-8" : "px-16 py-12"}`}>
         <HoverEdit
           initial="TyPair &mdash; Scale, Pair, Preview, Ship."
           fontFamily={header}
           userFont
           serif
+          as="div"
           className="mb-8 text-base font-medium text-white dark:text-[#1e293b]"
         />
-        <div className="mx-auto mb-8 grid grid-cols-3 gap-12 text-left" style={{ maxWidth: 700 }}>
+        <div className={`mx-auto mb-8 grid gap-12 text-left ${isMobile ? "grid-cols-1 gap-6" : "grid-cols-3 gap-12"}`} style={{ maxWidth: 700 }}>
           {[
             { title: "PRODUCT", items: ["Scale Calculator", "Font Pairing", "Code Export"] },
             { title: "RESOURCES", items: ["Blog", "Documentation", "API Reference"] },
@@ -260,11 +262,6 @@ export function UiPreview() {
           ))}
         </div>
         <p className="text-xs text-[#64748b]" style={{ fontFamily: body ? `${body}, sans-serif` : undefined }}>&copy; 2026 TyPair. All rights reserved.</p>
-      </div>
-
-      {/* ─── Code Export ─── */}
-      <div className="bg-[#f1f5f9] px-16 py-8 dark:bg-[#1e293b]">
-        <ExportPanel />
       </div>
     </div>
   );
