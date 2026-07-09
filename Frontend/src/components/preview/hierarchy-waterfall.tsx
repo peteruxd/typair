@@ -36,7 +36,7 @@ export function HierarchyWaterfall() {
                   {s.px}px / {s.rem}rem
                 </span>
               </div>
-              <div className="flex-1 truncate" style={{ fontFamily: fontFamily ? `${fontFamily}, ${isHeader ? "serif" : "sans-serif"}` : undefined, fontSize: s.rem * 100 + "%", fontWeight, lineHeight: s.lineHeight, letterSpacing: s.letterSpacing + "em" }}>
+              <div className="flex-1 truncate" style={{ fontFamily: fontFamily ? `${fontFamily}, ${isHeader ? "serif" : "sans-serif"}` : undefined, fontSize: s.rem + "rem", fontWeight, lineHeight: s.lineHeight, letterSpacing: s.letterSpacing + "em" }}>
                 {state.preview.customText || "The quick brown fox jumps over the lazy dog. Design your type system, ship in seconds."}
               </div>
             </div>
